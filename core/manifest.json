@@ -1,0 +1,32 @@
+{
+  "base": {
+    "name": "Project Kernel();",
+    "version": "2.8.1.f0",
+    "year": "2015",
+    "company": "Quenix Software",
+    "clanguage": "ru",
+    "ctype": "UTF-8"
+  },
+  "module": [
+    "db_connect", "kernel_tpl",
+    "transliterate", "gen_name"
+  ],
+  "assets": {
+    "jquery": "3.x",
+    "template": "template.tpl.html",
+    "css": [
+      "css/bootstrap.min.css",
+      "css/bootstrap-theme.min.css",
+      "css/style.css"
+    ],
+    "js": [
+      "js/bootstrap.min.js"
+    ]
+  },
+  "db_config": {
+    "db_host": "localhost",
+    "db_user": "root",
+    "db_pass": "",
+    "db_name": "project_db"
+  }
+}
