@@ -8,8 +8,8 @@
 $base = new Kernel();
 $base->_setHtml(PATH."/web/".$_config->_getManifest()->assets->template);
 
-$META = '<META HTTP-EQUIV="Content-language" content ="'.$_config->_getManifest()->clanguage.'">
-		<meta http-equiv="Content-Type" content="text/html; charset='.$_config->_getManifest()->ctype.'" />';
+$META = '<META HTTP-EQUIV="Content-language" content ="'.$_config->_getManifest()->base->clanguage.'">
+		<meta http-equiv="Content-Type" content="text/html; charset='.$_config->_getManifest()->base->ctype.'" >';
 
 $jq = intval(explode(".",$_config->_getManifest()->assets->jquery)[0]-1);
 $JQUERY = '<script src="/core/libs/'.$_config->_getJQ($jq).'"></script>';

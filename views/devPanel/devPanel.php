@@ -16,4 +16,4 @@ $_devPanel->_setVar("load_speed", $_config->_endPage($start));
 $_devPanel->_setVar("this_view", _VIEW_);
 
 if($_config->_getManifest()->base->devPanel)
-    echo $_devPanel->_getHtml();
+    $BODY .= $_devPanel->_getHtml();
