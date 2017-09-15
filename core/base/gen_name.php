@@ -11,5 +11,3 @@ function genName($chars,$max){
 		
 	return "qx_".$name;
 }
-
-?>

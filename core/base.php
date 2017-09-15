@@ -26,8 +26,7 @@ $base->_setVar("title", $TITLE);
 $base->_setVar("meta", $META);
 $base->_setVar("stylesheet", $JQUERY.$ASSETS.$HEAD);
 $base->_setVar("body", $BODY);
+$base->_setIf("devPanel", $_config->_getManifest()->base->devPanel);
 
 echo $base->_getHtml();
 unset($__config);
-
-?>

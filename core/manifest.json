@@ -1,11 +1,12 @@
 {
   "base": {
     "name": "Project Kernel();",
-    "version": "2.8.2.f1",
+    "version": "2.8.2.f2",
     "year": "2015",
     "company": "Quenix Software",
     "clanguage": "ru",
-    "ctype": "UTF-8"
+    "ctype": "UTF-8",
+    "devPanel": true
   },
   "module": [
     "db_connect", "kernel_tpl",

@@ -1,8 +1,8 @@
 <?
 
-define('IF_CON', "{?");
-define('IF_ELSE', "{:}");
-define('IF_END', "{;}");
+define('IF_CON', "{% if ");
+define('IF_ELSE', "{% else %}");
+define('IF_END', "{% endif %}");
 
 define('CON_S', "{% ");
 define('CON_F', " %}");
@@ -73,12 +73,9 @@ class Kernel extends manifest{
 				$start_str = substr($this->html, $first_pos, ($last_pos-$first_pos));
 				$start_str_n = str_replace(array("\n","\r"), '', $start_str);
 
-				preg_match('/\{\?(.+?)\}/', $start_str_n, $m);
+				preg_match('/\{\% if (.+?) \%\}/', $start_str_n, $m);
 				$if_exp = $m[1];
-				
-				
-				
-				
+
 				switch($if_exp) {
 					case "LOGIN":
 						$if_fin = (isset($_SESSION['id'])) ? true : false;
@@ -117,8 +114,7 @@ class Kernel extends manifest{
 						$finish_str = $this->clear_con($finish_str);
 						break;
 				}
-				
-				
+
 				if(isset($if_fin))
 				if(substr_count($start_str, IF_ELSE) != 0) {
 					if($if_fin) {
@@ -126,7 +122,7 @@ class Kernel extends manifest{
 						$finish_str = str_replace($m[1], "", $start_str_n);
 						$finish_str = $this->clear_con($finish_str);
 					} else {
-						preg_match("/".IF_CON.CON_F."(.+?)".IF_ELSE."/", $start_str_n, $m);
+						preg_match("/".CON_F."(.+?)".IF_ELSE."/", $start_str_n, $m);
 						$finish_str = str_replace($m[1], "", $start_str_n);
 						$finish_str = $this->clear_con($finish_str);
 					}
@@ -134,7 +130,7 @@ class Kernel extends manifest{
 					if($if_fin) {
 						$finish_str = $this->clear_con($start_str);
 					} else {
-						preg_match("/".IF_CON.CON_F."(.+?)".IF_END."/", $start_str_n, $m);
+						preg_match("/".CON_F."(.+?)".IF_END."/", $start_str_n, $m);
 						$finish_str = str_replace($m[1], "", $start_str_n);
 						$finish_str = $this->clear_con($finish_str);
 					}
@@ -164,5 +160,3 @@ class Kernel extends manifest{
     }
 
 }
-
-?>
