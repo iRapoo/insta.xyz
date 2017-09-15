@@ -42,5 +42,3 @@ $_config = new Manifest;
 foreach ($_config->_getManifest()->module as $key => $value) {
 	include_once(PATH.'/core/module/'.$value.'.php');
 }
-
-?>
