@@ -1,33 +1,33 @@
 <style>
-    #_devPanel {
+    #_status {
         z-index: 1000;
         position: fixed;
         width: 100%; height: 30px;
         bottom: 0px; left: 0px;
         background-color: rgba(0,0,0,0.8);
     }
-    ._devPanel_block {
+    ._status_block {
         display: inline-block;
         height: 100%; padding: 5px;
         color: #ffffff;
         font-size: 11pt;
         border-right: 0.5px solid rgba(255,255,255,0.2);
     }
-    ._devPanel_block[status="200"]{
+    ._status_block[status="200"]{
         background-color: #16a085;
     }
-    ._devPanel_block[status="404"]{
+    ._status_block[status="404"]{
         background-color: #c0392b;
     }
-    ._devPanel_block[status="403"]{
+    ._status_block[status="403"]{
         background-color: #d35400;
     }
 </style>
 
-<div id="_devPanel">
-    <div class="_devPanel_block" status="{% http_response_code %}">{% http_response_code %}</div>
-    <div class="_devPanel_block">Версия PHP: <u>{% php_version %}</u></div>
-    <div class="_devPanel_block">Версия приложения: <u>{% proj_version %}</u></div>
-    <div class="_devPanel_block">Время страницы: <u>{% load_speed %}s</u></div>
-    <div class="_devPanel_block">Текущее представление: <u>{% this_view %}</u></div>
+<div id="_status">
+    <div class="_status_block" status="{% http_response_code %}">{% http_response_code %}</div>
+    <div class="_status_block">Версия PHP: <u>{% php_version %}</u></div>
+    <div class="_status_block">Версия приложения: <u>{% proj_version %}</u></div>
+    <div class="_status_block">Время страницы: <u>{% load_speed %}s</u></div>
+    <div class="_status_block">Текущее представление: <u>{% this_view %}</u></div>
 </div>
