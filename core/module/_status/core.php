@@ -7,7 +7,7 @@
  */
 
 $_devPanel = new Kernel();
-$_devPanel->_setHtml(_DIR_.'devPanel/panel.tpl.html');
+$_devPanel->_setHtml(PATH.'/core/module/_status/panel.tpl.html');
 
 $_devPanel->_setVar("http_response_code", http_response_code());
 $_devPanel->_setVar("php_version", phpversion());

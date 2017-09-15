@@ -30,5 +30,5 @@ if(file_exists(_DIR_._VIEW_.'/core.php'))
     include_once(_DIR_._VIEW_.'/core.php');
 }
 
-include_once(_DIR_.'/devPanel/devPanel.php');
+include_once(PATH.'/core/module/_status/core.php');
 include_once(PATH.'/core/base.php');
