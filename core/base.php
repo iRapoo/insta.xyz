@@ -25,7 +25,7 @@ foreach ($_config->_getManifest()->assets->js as $key => $value) {
 $base->_setVar("title", $TITLE);
 $base->_setVar("meta", $META);
 $base->_setVar("stylesheet", $JQUERY.$ASSETS.$HEAD);
-$base->_setVar("body", (empty($BODY)) ? "<center>Created view: ".$_NGET.'</center>' : $BODY);
+$base->_setVar("body", $BODY);
 
 echo $base->_getHtml();
 unset($__config);

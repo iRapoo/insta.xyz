@@ -8,5 +8,5 @@ $HEAD .= '<link href="/web/assets/css/index.css" rel="stylesheet">'; //SET STYLE
 //**************************** END *******************************//
 
 $object = new Kernel();
-$object->_setHtml(_DIR_.'index/welcome.tpl.html');
+$object->_setHtml(_DIR_._VIEW_.'/welcome.tpl.html');
 $BODY = $object->_getHtml();
