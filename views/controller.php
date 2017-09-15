@@ -12,6 +12,8 @@ define('_ASSETS_', '/web/assets');
 
 include_once(PATH.'/core/kernel.php');
 
+$start = $_config->_startPage();
+
 if(!file_exists(_DIR_._VIEW_))
 {
     include_once(PATH.'/core/err/404.php');
@@ -28,4 +30,5 @@ if(file_exists(_DIR_._VIEW_.'/core.php'))
     include_once(_DIR_._VIEW_.'/core.php');
 }
 
+include_once(_DIR_.'/devPanel/devPanel.php');
 include_once(PATH.'/core/base.php');

@@ -13,7 +13,6 @@ class Manifest{
 		$manifest = json_decode($data);
 
 		return $manifest;
-
 	}
 
 	function _getJQ($key){
@@ -22,6 +21,19 @@ class Manifest{
 
 		return $jq[$key];
 	}
+
+	function _startPage(){
+        $time = microtime(); $time = explode(' ', $time); $time = $time[1] + $time[0]; $start = $time;
+
+        return $start;
+    }
+
+    function _endPage($start){
+        $time = microtime(); $time = explode(' ', $time); $time = $time[1] + $time[0];
+        $finish = $time; $total_time = round(($finish - $start), 4);
+
+        return $total_time;
+    }
 
 }
 
