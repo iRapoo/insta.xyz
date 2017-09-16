@@ -1,8 +1,10 @@
 html,body	{ margin: 0px; overflow: hidden; }
 
-html	{
-	background-image: url(/web/assets/img/bg.jpg);
-	background-size: cover;
+@media screen and (min-device-width: 900px) {
+	html	{
+		background-image: url(/web/assets/img/bg.jpg);
+		background-size: cover;
+	}
 }
 
 body	{

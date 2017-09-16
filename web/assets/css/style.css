@@ -1,4 +1,11 @@
-html,body	{ margin: 0px; overflow: hidden; }
+@font-face {
+	font-family: 'Avenir Oblique';
+	font-style: normal;
+	font-weight: normal;
+	src: local('Avenir Oblique'), url('/web/assets/fonts/Avenir-Oblique.ttf') format('ttf');
+}
+
+html,body	{ margin: 0px; overflow: hidden; font-family: "Avenir Oblique"; }
 
 #ERR_CONTENT	{
 	width: 100%;

@@ -1,7 +1,7 @@
 {
   "base": {
     "name": "Project Kernel();",
-    "version": "2.8.3.f1",
+    "version": "3.0.1.f0",
     "year": "2015",
     "company": "Quenix Software",
     "clanguage": "ru",
@@ -16,8 +16,7 @@
     "jquery": "3.x",
     "template": "template.tpl.html",
     "css": [
-      "css/bootstrap.min.css",
-      "css/bootstrap-theme.min.css",
+      "css/bootstrap-responsive.css",
       "css/style.css"
     ],
     "js": [
