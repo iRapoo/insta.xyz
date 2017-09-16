@@ -11,7 +11,7 @@
         height: 100%; padding: 7px;
         color: #ffffff;
         font-size: 11pt;
-        border-right: 0.5px solid rgba(255,255,255,0.2);
+        /*border-right: 0.5px solid rgba(255,255,255,0.2);*/
     }
     ._status_block[status="200"]{
         background-color: #16a085;
@@ -22,12 +22,25 @@
     ._status_block[status="403"]{
         background-color: #d35400;
     }
+    ._status_block img{
+        position: absolute;
+        height: 20px;
+    }
+    ._status_block u{
+        margin-left: 30px;
+    }
 </style>
 
 <div id="_status">
     <div class="_status_block" status="{% http_response_code %}">{% http_response_code %}</div>
-    <div class="_status_block">Версия PHP: <u>{% php_version %}</u></div>
-    <div class="_status_block">Версия приложения: <u>{% proj_version %}</u></div>
-    <div class="_status_block">Время страницы: <u>{% load_speed %}s</u></div>
-    <div class="_status_block">Текущее представление: <u>{% this_view %}</u></div>
+    <div class="_status_block" title="Версия PHP">
+        <img src="/core/module/_status/resource/version_php.png">  <u>{% php_version %}</u></div>
+    <div class="_status_block" title="Версия приложения">
+        <img src="/core/module/_status/resource/app_version.png"> <u>{% proj_version %}</u></div>
+    <div class="_status_block" title="Время загрузки страницы">
+        <img src="/core/module/_status/resource/load_page.png">  <u>{% load_speed %}s</u></div>
+    <div class="_status_block" title="Текущее представление">
+        <img src="/core/module/_status/resource/view.png">  <u>{% this_view %}</u></div>
+    <div class="_status_block" title="Подключеная база данных">
+        <img src="/core/module/_status/resource/data_base.png"> <u>{% data_base %}</u></div>
 </div>

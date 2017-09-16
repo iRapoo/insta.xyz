@@ -30,5 +30,7 @@ if(file_exists(_DIR_._VIEW_.'/core.php'))
     include_once(_DIR_._VIEW_.'/core.php');
 }
 
-include_once(PATH.'/core/module/_status/core.php');
+if($_config->_getManifest()->base->devPanel)
+    include_once(PATH.'/core/module/_status/core.php');
+
 include_once(PATH.'/core/base.php');
