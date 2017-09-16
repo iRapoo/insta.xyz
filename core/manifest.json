@@ -1,12 +1,12 @@
 {
   "base": {
     "name": "Project Kernel();",
-    "version": "3.0.1.f0",
+    "version": "3.0.1.f1",
     "year": "2015",
     "company": "Quenix Software",
     "clanguage": "ru",
     "ctype": "UTF-8",
-    "devPanel": true
+    "_status": true
   },
   "module": [
     "db_connect", "kernel_tpl",

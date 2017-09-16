@@ -1,6 +1,4 @@
 ErrorDocument 401 /core/err/401.php
-ErrorDocument 403 /core/err/403.php
-ErrorDocument 404 /core/err/404.php
 ErrorDocument 500 /core/err/500.php
 Options +Includes -Indexes
 
@@ -10,4 +8,4 @@ RewriteEngine on
 #Роутинг на главную страницу
 RewriteRule ^$ /views/controller.php?view=base [QSA,L]
 #Роутинг вьюшек
-RewriteRule ^([A-Za-z0-9-/]+)$ /views/controller.php?view=$1 [QSA,L]
+RewriteRule ^([A-Za-z0-9-._]+)$ /views/controller.php?view=$1 [QSA,L]

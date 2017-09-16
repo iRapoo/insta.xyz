@@ -1,0 +1,15 @@
+<div id="_status">
+    <div class="_status_block" status="{% http_response_code %}">{% http_response_code %}</div>
+    <div class="_status_block" title="Версия PHP">
+        <img src="/views/_status/resource/version_php.png">  <u>{% php_version %}</u></div>
+    <div class="_status_block" title="Версия приложения">
+        <img src="/views/_status/resource/app_version.png"> <u>{% proj_version %}</u></div>
+    <div class="_status_block" title="Время загрузки страницы">
+        <img src="/views/_status/resource/load_page.png">  <u>{% load_speed %}s</u></div>
+    <div class="_status_block" title="Текущее представление">
+        <img src="/views/_status/resource/view.png">  <u>{% this_view %}</u></div>
+    <div class="_status_block" title="Подключеная база данных">
+        <img src="/views/_status/resource/data_base.png"> <u>{% data_base %}</u></div>
+    <div class="_status_block" title="Версия JQuery">
+        <img src="/views/_status/resource/jquery.png"> <u>{% jq_version %}</u></div>
+</div>

@@ -1,0 +1,30 @@
+#_status {
+    z-index: 1000;
+    position: fixed;
+    width: 100%;
+    bottom: 0px; left: 0px;
+    background-color: rgba(0,0,0,0.8);
+}
+._status_block {
+    display: inline-block;
+    height: 100%; padding: 7px;
+    color: #ffffff;
+    font-size: 11pt;
+    /*border-right: 0.5px solid rgba(255,255,255,0.2);*/
+}
+._status_block[status="200"]{
+    background-color: #16a085;
+}
+._status_block[status="404"]{
+    background-color: #c0392b;
+}
+._status_block[status="403"]{
+    background-color: #d35400;
+}
+._status_block img{
+    position: absolute;
+    height: 20px;
+}
+._status_block u{
+    margin-left: 30px;
+}

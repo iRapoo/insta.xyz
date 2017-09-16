@@ -12,7 +12,7 @@ $META = '<META HTTP-EQUIV="Content-language" content ="'.$_config->_getManifest(
 		<meta http-equiv="Content-Type" content="text/html; charset='.$_config->_getManifest()->base->ctype.'" >';
 
 $jq = intval(explode(".",$_config->_getManifest()->assets->jquery)[0]-1);
-$JQUERY = '<script src="/core/libs/'.$_config->_getJQ($jq).'"></script>';
+$JQUERY = '<script src="/core/jquery/'.$_config->_getJQ($jq).'"></script>';
 
 foreach ($_config->_getManifest()->assets->css as $key => $value) {
 	$ASSETS .= '<link href="/web/assets/'.$value.'" rel="stylesheet">';
@@ -28,4 +28,4 @@ $base->_setVar("stylesheet", $JQUERY.$ASSETS.$HEAD);
 $base->_setVar("body", $BODY);
 
 echo $base->_getHtml();
-unset($__config);
+unset($_config);
