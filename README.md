@@ -10,7 +10,7 @@
  **Конфигурация проекта**
  
  Главный файл конфигурации **Kernel** - `manifest.json` он находится в директории `core`
-  и имеет вид
+  и имеет вид json дерева.
   
       {
         "base": {
@@ -19,12 +19,14 @@
           "year": "2015",
           "company": "Quenix Software",
           "clanguage": "ru",
-          "ctype": "UTF-8",
-          "_status": true
+          "ctype": "UTF-8"
         },
         "module": [
           "db_connect", "kernel_tpl", "generate"
         ],
+        "_status": {
+          "enabled": true
+        },
         "assets": {
           "jquery": "3.x",
           "template": "template.tpl.html",
@@ -44,3 +46,8 @@
         }
       }
  
+В Manifest разрешается добавлять новые ветки и параметры. 
+В представлениях в любой мамент можно получить любой параметр следующим способом<br>
+    
+    $_config->_getManifest()->{get_param};
+    

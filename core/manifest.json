@@ -5,12 +5,14 @@
     "year": "2015",
     "company": "Quenix Software",
     "clanguage": "ru",
-    "ctype": "UTF-8",
-    "_status": true
+    "ctype": "UTF-8"
   },
   "module": [
     "db_connect", "kernel_tpl", "generate"
   ],
+  "_status": {
+    "enabled": true
+  },
   "assets": {
     "jquery": "3.x",
     "template": "template.tpl.html",
