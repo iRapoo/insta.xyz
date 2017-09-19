@@ -14,25 +14,10 @@ foreach (users::findAll("ORDER BY `id` DESC") as $user){
         echo $user->id.". ".$user->login."<br>";
 }
 
-foreach (users::findByTag("login", "Rapoo") as $user) {
+foreach (users::findByTag("id", "1") as $user) {
     if(!empty($user))
         echo $user->id.". ".$user->login."<br>";
 }
-
-$names = [ "first", "second", "thirsd" ];
-
-$name = new users();
-
-for($i=0;$i<count($names);$i++){
-    $name->login = $names[$i];
-    //$name->insert();
-}
-
-$user_del = new users();
-
-$user_del->login = "first";
-
-$user_del->delete();
 
 
 print_r(users::findAll());
