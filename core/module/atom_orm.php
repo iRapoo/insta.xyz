@@ -1,6 +1,6 @@
 <?php
-/*************************
- * atom_orm.php v1.0.1     **
+/**************************
+ * atom_orm.php v1.0.2   **
  * for project Kernel    **
  * Rapoo (c) 19.09.2017  **
  *************************/
@@ -19,6 +19,12 @@ class Atom extends Manifest
         }else{
             throw new Exception("Параметр $dbi не является объектом mysqli", 1);
             return false;
+        }
+    }
+
+    static public function model($model){
+        if(!empty($model)){
+            include_once(PATH."/model/".$model.".php");
         }
     }
 
@@ -55,6 +61,34 @@ class Atom extends Manifest
                 return $rClass;												//Возвращаем класс
             } else return false;											//Если строка не найдена, то ложь
         } else return false;												//Если не число возвращаем ложь
+    }
+
+    static function findByTag($tag, $value, $filter = ""){
+        $query = "SELECT * FROM `".get_called_class()."` WHERE `".$tag.'` = "'.self::escape($value).'" '.$filter;
+        $result = self::$db->query($query);
+        self::$stack->push($query." [".$result->num_rows."]");
+        if ($result->num_rows > 0){
+            for($i=0;$i<$result->num_rows;$i++)
+                $row[$i] = $result->fetch_object();
+            $cName = get_called_class();
+            $rClass = new $cName();
+            foreach ($row as $key => $value) $rClass->$key = $value;
+            return $rClass;
+        }else return false;
+    }
+
+    static function findAll($filter = ""){
+        $query = "SELECT * FROM `".get_called_class()."` ".$filter;
+        $result = self::$db->query($query);
+        self::$stack->push($query." [".$result->num_rows."]");
+        if ($result->num_rows > 0){
+            for($i=0;$i<$result->num_rows;$i++)
+                    $row[$i] = $result->fetch_object();
+            $cName = get_called_class();
+            $rClass = new $cName();
+            foreach ($row as $key => $value) $rClass->$key = $value;
+            return $rClass;
+        }else return false;
     }
 
     public function update(){									//Сохраняем объект - UPDATE
