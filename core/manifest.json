@@ -9,8 +9,7 @@
     "_status": true
   },
   "module": [
-    "db_connect", "kernel_tpl",
-    "transliterate", "gen_name"
+    "db_connect", "kernel_tpl", "generate"
   ],
   "assets": {
     "jquery": "3.x",
