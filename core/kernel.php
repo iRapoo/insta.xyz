@@ -15,6 +15,15 @@ class Manifest{
 		return $manifest;
 	}
 
+	function _getMySQLi(){
+        $mysqli = new mysqli(
+            $this->_getManifest()->db_config->db_host,
+            $this->_getManifest()->db_config->db_user,
+            $this->_getManifest()->db_config->db_pass,
+            $this->_getManifest()->db_config->db_name );
+        return $mysqli;
+    }
+
 	function _getJQ($key){
 
 		$jq = ["jquery-1.12.3.min.js","jquery-2.2.3.min.js","jquery-3.2.1.min.js"]; //JQuery versions

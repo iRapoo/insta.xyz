@@ -12,7 +12,8 @@ define('YEAR', (($_config->_getManifest()->year==date("Y")) ? date("Y") : $_conf
 
 session_start();
 
-class Kernel extends manifest{
+class Kernel extends Manifest
+{
 	
 	var $values;
 	var $if_val;
