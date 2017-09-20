@@ -24,7 +24,13 @@ class Atom extends Manifest
 
     static public function model($model){
         if(!empty($model)){
-            include_once(PATH."/model/".$model.".php");
+            ob_start();
+            require_once PATH."/model/".$model.".php";
+            $output = ob_get_clean();
+            return $output;
+        }else{
+            throw new Exception("Параметр $model не является объектом model", 1);
+            return false;
         }
     }
 

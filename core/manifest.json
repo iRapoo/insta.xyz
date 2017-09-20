@@ -7,9 +7,6 @@
     "clanguage": "ru",
     "ctype": "UTF-8"
   },
-  "module": [
-    "atom_orm", "kernel_tpl", "generate"
-  ],
   "_status": {
     "enabled": true
   },

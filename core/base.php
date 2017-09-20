@@ -22,10 +22,10 @@ foreach ($_config->_getManifest()->assets->js as $key => $value) {
 	$ASSETS .= '<script src="/web/assets/'.$value.'"></script>';
 }
 
-$base->_setVar("title", $TITLE);
-$base->_setVar("meta", $META);
-$base->_setVar("stylesheet", $JQUERY.$ASSETS.$HEAD);
-$base->_setVar("body", $BODY);
+$base->_setVar("title", $_config->title);
+$base->_setVar("meta", $_config->meta);
+$base->_setVar("stylesheet", $JQUERY.$ASSETS.$_config->head);
+$base->_setVar("body", $_config->body);
 
 echo $base->_getHtml();
 unset($_config);

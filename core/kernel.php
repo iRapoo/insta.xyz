@@ -7,6 +7,8 @@
 
 class Manifest{
 
+    public $title,$meta,$head,$body; //default variables
+
 	function _getManifest(){
 
 		$data = file_get_contents(PATH.'/core/manifest.json');
@@ -48,5 +50,7 @@ class Manifest{
 
 $_config = new Manifest;
 
-foreach ($_config->_getManifest()->module as $key => $value)
-	include_once(PATH.'/core/module/'.$value.'.php');
+foreach(glob(PATH."/core/module/*.php") as $_module)
+{
+    require_once $_module;
+}

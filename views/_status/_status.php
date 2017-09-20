@@ -6,7 +6,7 @@
  * Time: 16:50
  */
 
-$HEAD .= '<link href="/views/_status/_status.css" rel="stylesheet">';
+$_config->head .= '<link href="/views/_status/_status.css" rel="stylesheet">';
 
 $_devPanel = new Kernel();
 $_devPanel->_setHtml(_DIR_.'_status/_status.tpl.html');
@@ -21,4 +21,4 @@ $_devPanel->_setVar("data_base", $_config->_getManifest()->db_config->db_name);
 $jq = intval(explode(".",$_config->_getManifest()->assets->jquery)[0]-1);
 $_devPanel->_setVar("jq_version", $_config->_getJQ($jq));
 
-$BODY .= $_devPanel->_getHtml();
+$_config->body .= $_devPanel->_getHtml();

@@ -10,27 +10,27 @@ define('_DIR_', PATH.'/views/');
 define('_VIEW_', $_GET['view']);
 define('_ASSETS_', '/web/assets');
 
-include_once(PATH.'/core/kernel.php');
+require_once PATH.'/core/kernel.php' ;
 
 $start = $_config->_startPage();
 
 if(!file_exists(_DIR_._VIEW_))
 {
-    include_once(PATH.'/core/err/404.php');
+    require_once PATH.'/core/err/404.php';
 }
 
 if(file_exists(_DIR_._VIEW_)
     AND !file_exists(_DIR_._VIEW_.'/core.php'))
 {
-    include_once(PATH.'/core/err/403.php');
+    require_once PATH.'/core/err/403.php';
 }
 
 if(file_exists(_DIR_._VIEW_.'/core.php'))
 {
-    include_once(_DIR_._VIEW_.'/core.php');
+    require_once _DIR_._VIEW_.'/core.php';
 }
 
 if($_config->_getManifest()->_status->enabled)
-    include_once(_DIR_.'/_status/_status.php');
+    require_once _DIR_.'/_status/_status.php';
 
-include_once(PATH.'/core/base.php');
+require_once PATH.'/core/base.php';
