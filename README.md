@@ -51,3 +51,84 @@
     
     $_config->_getManifest()->{get_param};
     
+**ORM Atom**
+
+Для работы с **ORM Atom** необходимо создать модель таблицы в директроии `model`
+
+    <?php
+    
+    class users extends Atom
+    {
+        public $id;
+        public $login;
+        public $password;
+    }
+    
+Для работы с **ORM Atom** в представлениях необходимо указать конфигурацию MySQLi 
+в начале файла `core.php`
+
+    Atom::setup($_config->_getMySQLi());
+    
+После необходимо показать с какими моделями будем работать
+
+    Atom::model("users");
+    
+Теперь можно получить любую запись из подключенных моделей, например:
+
+    //Выведет на экран логин пользователя c `id` = 1 из таблицы `users`
+    $user = users::findById(1);
+    echo $user->login;
+    
+Для получения всех данных с сортировкой можно использовать `users::findAll()`
+
+    /*
+     * Пример результата:
+     * ID: 1 | Логин: first | Пароль: 123456789
+     * ID: 2 | Логин: second | Пароль: 987654321
+     */
+    foreach (users::findAll("ORDER BY `id`") as $user){
+        if(!empty($user)) {
+            $_config->body .= "ID: " . $user->id;
+            $_config->body .= " | Логин: " . $user->login;
+            $_config->body .= " | Пароль: " . $user->password . "<br>";
+        }
+    }
+    
+Для получения данных по тегу можно использовать `users::findByTag()`
+
+    /*
+     * Пример результата:
+     * ID: 1 | Логин: first | Пароль: 123456789
+     */
+    foreach (users::findByTag("login", "first", "ORDER BY `id`") as $user){
+        if(!empty($user)) {
+           $_config->body .= "ID: " . $user->id;
+           $_config->body .= " | Логин: " . $user->login;
+           $_config->body .= " | Пароль: " . $user->password . "<br>";
+        }
+    }
+    
+Чтобы обновить запись в таблице можно использовать метод `update()`
+
+    //Запись под `id` = 1 получит новый логин "first" -> "second"
+    $user = new users();
+    
+    $user->id = 1;
+    $user->login = "second";
+    
+    echo $user->update() ? "Успешно" : "Неудача";
+    
+По этому же принцепу действует метод добавления `insert()`
+
+    //Добавится запись под `id` = 3 и получит логин "third"
+    $user = new users();
+        
+    $user->id = 3;
+    $user->login = "third";
+        
+    echo $user->insert() ? "Успешно" : "Неудача";
+    
+Для удаления записи необходимо использовать метод `delete()`
+
+    //Метод удалит запись с `id` = 3
+    users::findById(3)->delete();
