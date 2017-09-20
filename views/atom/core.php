@@ -11,7 +11,10 @@ $object->_setVar("first_user", users::findById(1)->login);
 $object->_setVar("second_user", users::findById(2)->login);
 $_config->body .= $object->_getHtml();
 
-foreach (users::findAll("ORDER BY `id` DESC") as $user){
-    if(!empty($user))
-        $_config->body .= "Пароль: ".$user->password."<br>";
+foreach (users::findAll("ORDER BY `id`") as $user){
+    if(!empty($user)) {
+        $_config->body .= "ID: " . $user->id;
+        $_config->body .= " | Логин: " . $user->login;
+        $_config->body .= " | Пароль: " . $user->password . "<br>";
+    }
 }

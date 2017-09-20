@@ -1,11 +1,11 @@
 <?php
 /**************************
- * atom_orm.php v1.0.2   **
+ * atom_orm.php v1.0.3   **
  * for project Kernel    **
  * Rapoo (c) 19.09.2017  **
  *************************/
 
-class Atom extends Manifest
+class Atom
 {
 
     private static $db;
@@ -99,7 +99,7 @@ class Atom extends Manifest
 
     public function update(){									//Сохраняем объект - UPDATE
         $id = key(self::_getVars());						//Получаем идентификатор
-        if (!isset($this->$id) || empty($this->$id)) return $this->Add();	//Если пусто, добавляем
+        if (!isset($this->$id) || empty($this->$id)) return $this->insert();	//Если пусто, добавляем
         $query = "UPDATE `".get_called_class()."` SET ";	//Формируем запрос
         $columns = self::_getVars();						//Получем колонки таблицы
         $Update = array();									//Массив обновления
