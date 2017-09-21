@@ -3,7 +3,7 @@
 //************************** HEADERS *******************************//
 
 $_config->title = "Welcome! ".$_config->_getManifest()->base->name; //SET TITLE
-$_config->head .= '<link href="'._ASSETS_.'/css/base.css" rel="stylesheet">'; //SET STYLESHEET
+$_config->css[] = _ASSETS_."/css/base.css"; //SET STYLESHEET
 
 //**************************** END *******************************//
 

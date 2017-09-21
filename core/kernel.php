@@ -8,7 +8,8 @@
 class Manifest{
 
     public $title,$meta,$head,$body; //default variables
-    public $js,$css = array(); //default arrays
+    public $css = array(); //default CSS
+    public $js = array(); //default JavaScript
 
 	function _getManifest(){
 

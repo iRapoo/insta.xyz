@@ -2,8 +2,6 @@
 
 Atom::setup($_config->_getMySQLi());
 
-$_config->js[] = _ASSETS_."/js/test.js";
-
 $_config->title = "Панель управления";
 
 $control = new Kernel();
