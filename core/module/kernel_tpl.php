@@ -31,6 +31,7 @@ class Kernel extends Manifest
         return false;
       } else {
         $this->html = join(file($tpl_name));
+        return true;
       }
     }
 	
@@ -73,6 +74,8 @@ class Kernel extends Manifest
 
 				$start_str = substr($this->html, $first_pos, ($last_pos-$first_pos));
 				$start_str_n = str_replace(array("\n","\r"), '', $start_str);
+
+                $finish_str = null;
 
 				preg_match('/\{\% if (.+?) \%\}/', $start_str_n, $m);
 				$if_exp = $m[1];
@@ -143,9 +146,9 @@ class Kernel extends Manifest
 		return $this->html;
 	}
 
-	function _setHtml($tpl_name){ // <-- enter templates
+	function _setHtml($path){ // <-- enter templates
 		$this->_setDefine(); // <-- set define vars "manifest->base"
-    	$this->html($tpl_name);
+    	$this->html($path);
     }
 
 	function _getHtml(){ // <-- print templates
