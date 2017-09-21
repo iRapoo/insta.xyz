@@ -61,7 +61,7 @@
     // Подключение css файла
     $_config->css[] = _ASSETS_."/css/test.css";
         или
-    $_config->js[] = "test.css";
+    $_config->css[] = "test.css";
     
 **ORM Atom**
 
