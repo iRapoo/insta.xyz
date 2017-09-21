@@ -7,6 +7,6 @@ $_config->css[] = _ASSETS_."/css/base.css"; //SET STYLESHEET
 
 //**************************** END *******************************//
 
-$object = new Kernel();
-$object->_setHtml(_DIR_._VIEW_.'/welcome.tpl.html');
-$_config->body = $object->_getHtml();
+$html = new Kernel();
+$html->_setHtml(_DIR_._VIEW_.'/welcome.tpl.html');
+$_config->body = $html->_getHtml();
