@@ -14,7 +14,8 @@
     "jquery": "3.x",
     "template": "template.tpl.html",
     "css": [
-      "css/bootstrap-responsive.css",
+      "css/bootstrap.css",
+      "css/bootstrap-theme.css",
       "css/style.css"
     ],
     "js": [

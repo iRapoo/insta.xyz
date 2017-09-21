@@ -81,25 +81,25 @@ class Kernel extends Manifest
 				$if_exp = $m[1];
 
 				switch($if_exp) {
-					case "LOGIN":
+					case "login":
 						$if_fin = (isset($_SESSION['id'])) ? true : false;
 						break;
-					case "ADMIN":
+					case "admin":
 						$if_fin = (isset($_SESSION['rank']) and $_SESSION['rank'] == "a") ? true : false;
 						break;
-					case "MODER":
+					case "moder":
 						$if_fin = (isset($_SESSION['rank']) and $_SESSION['rank'] == "m") ? true : false;
 						break;
-					case "USER":
+					case "user":
 						$if_fin = (isset($_SESSION['rank']) and $_SESSION['rank'] == "u") ? true : false;
 						break;
-					case "ROOT":
+					case "root":
 						$if_fin = (isset($_SESSION['rank']) and $_SESSION['rank'] == 'a' or isset($_SESSION['rank']) and $_SESSION['rank'] == 'm') ? true : false;
 						break;
-					case "MAN":
+					case "man":
 						$if_fin = (isset($_SESSION['sex']) and $_SESSION['sex'] == 0) ? true : false;
 						break;
-					case "WOM":
+					case "wom":
 						$if_fin = (isset($_SESSION['sex']) and $_SESSION['sex'] == 1) ? true : false;
 						break;
 					default:

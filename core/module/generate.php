@@ -1,6 +1,6 @@
 <?php
 
-class Generate extends Manifest
+class Generate
 {
 
     /*
