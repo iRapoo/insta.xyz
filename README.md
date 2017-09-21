@@ -51,6 +51,18 @@
     
     $_config->_getManifest()->{get_param};
     
+Для подключения JavaScript и CSS файлов в представлениях
+
+    // Подключение js файла
+    $_config->js[] = _ASSETS_."/js/test.js";
+        или
+    $_config->js[] = "test.js";
+    
+    // Подключение css файла
+    $_config->css[] = _ASSETS_."/css/test.css";
+        или
+    $_config->js[] = "test.css";
+    
 **ORM Atom**
 
 Для работы с **ORM Atom** необходимо создать модель таблицы в директроии `model`
