@@ -9,27 +9,6 @@
     box-sizing: border-box;
 }
 
-#_auth_btn
-{
-    background-color: #d35400;
-    color: #ffffff;
-    font-size: 13pt;
-    font-weight: bold;
-    padding: 5px 8px 5px 8px;
-    border: none;
-    cursor: default;
-
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
-
-    outline: none;
-}
-
-#_auth_btn:hover
-{
-    opacity: 0.9;
-}
 
 /*
  **********************
@@ -38,16 +17,18 @@
 /*
  * Block _auth_panel
  */
-.container
+._auth_panel
 {
+    display: none;
     position: absolute;
+    padding-left: -20px;
     background-color: #ffffff;
-    left: 10px; top: 45px;
-    width: 580px;
+    left: 10px; top: 50px;
+    width: 350px;
     box-shadow: 0 2px 10px rgba(0,0,0,.2);
 }
 
-.container::after, .container::before {
+._auth_panel::after, ._auth_panel::before {
     content: '';
     position: absolute;
     background-color: #ffffff;
@@ -59,14 +40,14 @@
     -webkit-transform: rotate(45deg);
 }
 
-.container::before {
+._auth_panel::before {
     z-index: 1; /* Накладываем поверх, чтобы скрыть следы тени */
     box-shadow: none; /* Прячем тень */
 }
 
-.row {}
 .btn-label {position: relative;left: -12px;display: inline-block;padding: 6px 12px;background: rgba(0,0,0,0.15);border-radius: 3px 0 0 3px;}
 .btn-labeled {padding-top: 0;padding-bottom: 0;}
+.btn-right { text-align: right; }
 .input-group { margin-bottom:10px; }
 .separator { border-right: 1px solid #dfdfe0; }
 .facebook,.vk { min-width:170px; }
