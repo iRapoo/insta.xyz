@@ -1,3 +1,4 @@
+{% if post %}
 <div class="container">
     <div class="center-block panel-heading"><h2>Регистрация</h2></div>
     <form class="form-horizontal panel-body" method="post">
@@ -5,54 +6,54 @@
             <label class="control-label col-xs-3" for="firstName">Имя:</label>
             <div class="col-xs-8 input-group">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                <input type="text" class="form-control" id="firstName" placeholder="Введите имя" required>
+                <input type="text" class="form-control" id="firstName" name="login" placeholder="Введите имя" required>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-xs-3">Дата рождения:</label>
             <div class="col-xs-8 input-group">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                <input type="date" class="form-control">
+                <input type="date" name="birthday" class="form-control">
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-xs-3" for="inputEmail">Email:</label>
             <div class="col-xs-8 input-group">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-                <input type="email" class="form-control" id="inputEmail" placeholder="Email" required>
+                <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email" required>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-xs-3" for="inputPassword">Пароль:</label>
             <div class="col-xs-8 input-group">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                <input type="password" class="form-control" id="inputPassword" placeholder="Введите пароль" required>
+                <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Введите пароль" required>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-xs-3" for="confirmPassword">Подтвердите пароль:</label>
             <div class="col-xs-8 input-group">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                <input type="password" class="form-control" id="confirmPassword" placeholder="Введите пароль ещё раз" required>
+                <input type="password" class="form-control" id="confirmPassword" name="password2" placeholder="Введите пароль ещё раз" required>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-xs-3" for="phoneNumber">Телефон:</label>
             <div class="col-xs-8 input-group">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
-                <input type="tel" class="form-control bfh-phone" id="phoneNumber" data-format="+7 (ddd) ddd-dddd" placeholder="Введите номер телефона" required>
+                <input type="tel" class="form-control bfh-phone" id="phoneNumber" name="phone" data-format="+7 (ddd) ddd-dddd" placeholder="Введите номер телефона" required>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-xs-3">Пол:</label>
             <div class="col-xs-2">
                 <label class="radio-inline">
-                    <input type="radio" name="genderRadios" value="male" required> Мужской
+                    <input type="radio" name="sex" value="male" required> Мужской
                 </label>
             </div>
             <div class="col-xs-2">
                 <label class="radio-inline">
-                    <input type="radio" name="genderRadios" value="female" required> Женский
+                    <input type="radio" name="sex" value="female" required> Женский
                 </label>
             </div>
         </div>
@@ -65,3 +66,8 @@
         </div>
     </form>
 </div>
+{% else %}
+<div class="container">
+    <h2>Регистрация прошла успешно!</h2>
+</div>
+{% endif %}
