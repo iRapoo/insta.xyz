@@ -1,6 +1,6 @@
 <?php
 /**************************
- * atom_orm.php v1.0.3   **
+ * atom_orm.php v1.0.4   **
  * for project Kernel    **
  * Rapoo (c) 19.09.2017  **
  *************************/
@@ -23,15 +23,57 @@ class Atom
     }
 
     static public function model($model){
-        if(!empty($model)){
+        if(self::isModel($model)){
             ob_start();
             require_once PATH."/model/".$model.".php";
+            if(!self::isExist($model))
+                self::buildModel($model);
             $output = ob_get_clean();
             return $output;
         }else{
             throw new Exception("Параметр $model не является объектом model", 1);
             return false;
         }
+    }
+
+    static function isExist($model){
+        if(self::isModel($model)){
+            $query = "CHECK TABLE ".$model;
+            $result = self::$db->query($query);
+            $row = $result->fetch_assoc();
+            return ($row['Msg_type']=="Error") ? false : true;
+        }else{
+            throw new Exception("Параметр $model не является объектом model", 1);
+            return false;
+        }
+    }
+
+    static function buildModel($model){
+        if(self::isModel($model)){
+            $columns = array_filter(get_class_vars($model),function($elem){
+                if (!is_object($elem)) return true;
+            });
+
+            $query = "CREATE TABLE ".$model." (";
+
+            foreach ($columns as $k => $v) {
+                if($k=="id")
+                    $query .= $k." INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,";
+                else
+                    $query .= $k." ".$v.",";
+            }
+            $query = substr($query, 0, -1);
+            $query .= ");";
+
+            return self::$db->query($query);
+        }else{
+            throw new Exception("Параметр $model не является объектом model", 1);
+            return false;
+        }
+    }
+
+    static function isModel($model){
+        return file_exists(PATH."/model/".$model.".php");
     }
 
     static function setEncoding($enc){

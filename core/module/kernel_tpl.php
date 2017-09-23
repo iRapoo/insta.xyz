@@ -97,10 +97,10 @@ class Kernel extends Manifest
 						$if_fin = (isset($_SESSION['rank']) and $_SESSION['rank'] == 'a' or isset($_SESSION['rank']) and $_SESSION['rank'] == 'm') ? true : false;
 						break;
 					case "man":
-						$if_fin = (isset($_SESSION['sex']) and $_SESSION['sex'] == 0) ? true : false;
+						$if_fin = (isset($_SESSION['sex']) and $_SESSION['sex'] == "male") ? true : false;
 						break;
 					case "wom":
-						$if_fin = (isset($_SESSION['sex']) and $_SESSION['sex'] == 1) ? true : false;
+						$if_fin = (isset($_SESSION['sex']) and $_SESSION['sex'] == "female") ? true : false;
 						break;
 					default:
 					
