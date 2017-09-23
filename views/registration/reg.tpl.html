@@ -1,7 +1,7 @@
 {% if post %}
 <div class="container">
     <div class="center-block panel-heading"><h2>Регистрация</h2></div>
-    <form class="form-horizontal panel-body" method="post">
+    <form class="form-horizontal panel-body" data-toggle="validator" method="post">
         <div class="form-group">
             <label class="control-label col-xs-3" for="firstName">Имя:</label>
             <div class="col-xs-8 input-group">
@@ -34,7 +34,7 @@
             <label class="control-label col-xs-3" for="confirmPassword">Подтвердите пароль:</label>
             <div class="col-xs-8 input-group">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                <input type="password" class="form-control" id="confirmPassword" name="password2" placeholder="Введите пароль ещё раз" required>
+                <input type="password" class="form-control" id="confirmPassword" placeholder="Введите пароль ещё раз" required>
             </div>
         </div>
         <div class="form-group">
@@ -68,6 +68,6 @@
 </div>
 {% else %}
 <div class="container">
-    <h2>Регистрация прошла успешно!</h2>
+    <h2>{% result_registration %}</h2>
 </div>
 {% endif %}
