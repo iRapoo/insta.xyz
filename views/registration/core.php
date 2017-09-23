@@ -20,13 +20,9 @@ switch($_GET['status']){
         break;
 }
 
-/*
-if (hash_equals($hashed_password, crypt($input_password, $hashed_password))) {
-    echo "Пароль верен!";
-}*/
-
 if(!$access) {
     $user = new users();
+    $_POST['access_key'] = Generate::genRandomString(false, 125);
     foreach ($_POST as $key => $value) {
 
         if($key!="password")
@@ -35,6 +31,7 @@ if(!$access) {
             $user->$key = crypt($value);
 
     }
+    $user->rank = "u";
     if($user->insert())
         header("location: ".$_SERVER['REQUEST_URI']."?status=ok");
     else

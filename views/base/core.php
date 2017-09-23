@@ -1,7 +1,5 @@
 <?php
 
-Atom::setup($_config->_getMySQLi());
-
 //************************** HEADERS *******************************//
 
 $_config->title = "Welcome! ".$_config->_getManifest()->base->name; //SET TITLE

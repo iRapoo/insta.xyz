@@ -1,6 +1,9 @@
 <div id="_reg_block">
     {% if login %}
-        Авторезирован
+        <div>
+            <span class="glyphicon glyphicon-user"></span>
+            <b><u>{% user_login %}</u></b>
+        </div>
     {% else %}
         <button type="button" class="btn _auth_btn btn-primary">Войти</button>
     {% endif %}
@@ -10,14 +13,14 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 login-box">
-                            <form role="form">
+                            <form id="_auth_form" role="form" method="post" action="/_auth">
                                 <div class="input-group">
                                     <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                                    <input type="text" class="form-control" placeholder="Имя пользователя" required autofocus />
+                                    <input type="text" class="form-control" name="login" placeholder="Имя пользователя" required autofocus />
                                 </div>
                                 <div class="input-group">
                                     <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                                    <input type="password" class="form-control" placeholder="Ваш пароль" required />
+                                    <input type="password" class="form-control" name="password" placeholder="Ваш пароль" required />
                                 </div>
                                 <p>
                                     <a href="/recover">Забыли свой пароль?</a></p>
@@ -31,17 +34,17 @@
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" value="remember">
+                                    <input type="checkbox" name="remember" form="_auth_form" value="remember">
                                     Запомнить меня
                                 </label>
                             </div>
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6 btn-right">
                             {% if login %}
-                            <button type="button" class="btn btn-labeled btn-danger">
+                            <button type="submit" class="btn btn-labeled btn-danger">
                                 <span class="btn-label"><i class="glyphicon glyphicon-remove"></i></span>Выход</button>
                             {% else %}
-                            <button type="button" class="btn btn-labeled btn-success">
+                            <button type="submit" form="_auth_form" class="btn btn-labeled btn-success">
                                 <span class="btn-label"><i class="glyphicon glyphicon-ok"></i></span>Войти</button>
                             {% endif %}
                         </div>

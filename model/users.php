@@ -9,4 +9,6 @@ class users extends Atom
     public $password = "VARCHAR(255)";
     public $phone = "VARCHAR(255)";
     public $sex = "VARCHAR(6)";
+    public $rank = "VARCHAR(1) DEFAULT 'u'";
+    public $access_key = "VARCHAR(128)";
 }
