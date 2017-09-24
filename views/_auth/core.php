@@ -1,5 +1,20 @@
 <?php
 
+if(isset($_POST['auth_exit'])){
+    session_unset();
+    session_destroy();
+
+    if(isset($_COOKIE['_ak']))
+        setcookie("_ak", "", time() - 3600, "/");
+
+    if (@$_SERVER['HTTP_REFERER'] != null) {
+        header("Location: ".$_SERVER['HTTP_REFERER']);
+    }else{
+        header("Location: /");
+    }
+    exit();
+}
+
 Atom::setup($_config->_getMySQLi());
 Atom::model("users");
 
@@ -32,6 +47,7 @@ if(!empty($db_user)) {
     }else{
         header("Location: /");
     }
+    exit();
 }
 else{
     $_config->body .= '<div class="alert alert-danger"><center><strong>Ошибка авторизации!</strong> Попробуйте еще раз или <a href="/" class="alert-link">вернитесь на главную страницу!</a></center></div>';
