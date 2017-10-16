@@ -1,8 +1,8 @@
 {
   "base": {
-    "name": "Project Kernel();",
+    "name": "Kernel Project",
     "version": "3.0.6.f0",
-    "year": "2015",
+    "year": "2017",
     "company": "Quenix Software",
     "language": "ru",
     "encoding": "UTF-8"
@@ -15,7 +15,6 @@
     "template": "template.tpl.html",
     "css": [
       "css/bootstrap.css",
-      "css/bootstrap-theme.css",
       "css/style.css"
     ],
     "js": [
@@ -26,6 +25,6 @@
     "db_host": "localhost",
     "db_user": "root",
     "db_pass": "",
-    "db_name": "project_db"
+    "db_name": "insta_db"
   }
 }

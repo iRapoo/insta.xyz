@@ -4,6 +4,7 @@
     width: 100%;
     bottom: 0px; left: 0px;
     background-color: rgba(0,0,0,0.8);
+    box-sizing: border-box;
 }
 
 @media screen and (min-device-width: 600px) {

@@ -25,6 +25,9 @@ class Manifest{
             $this->_getManifest()->db_config->db_user,
             $this->_getManifest()->db_config->db_pass,
             $this->_getManifest()->db_config->db_name );
+
+        mysqli_set_charset($mysqli, 'utf8');
+
         return $mysqli;
     }
 

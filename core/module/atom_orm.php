@@ -60,7 +60,7 @@ class Atom
                 if($k=="id")
                     $query .= $k." INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,";
                 else
-                    $query .= $k." ".$v.",";
+                    $query .= "`".$k."` ".$v.",";
             }
             $query = substr($query, 0, -1);
             $query .= ");";

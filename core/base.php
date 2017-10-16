@@ -17,7 +17,8 @@ foreach ($_config->_getManifest()->assets->css as $key => $value) {
 
 foreach ($_config->css as $key => $value){
 
-    $_config->head .= (strripos($value, "web")) ? '<link href="'.$value.'" rel="stylesheet">' : '<link href="/web/assets/css/'.$value.'" rel="stylesheet">';
+    //$_config->head .= (strripos($value, "web")) ? '<link href="'.$value.'" rel="stylesheet">' : '<link href="/web/assets/css/'.$value.'" rel="stylesheet">';
+    $_config->head .= '<link href="'.$value.'" rel="stylesheet">';
 }
 
 $jq = intval(explode(".",$_config->_getManifest()->assets->jquery)[0]-1);

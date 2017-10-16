@@ -10,11 +10,11 @@ define('_DIR_', PATH.'/views/');
 define('_VIEW_', $_GET['view']);
 define('_ASSETS_', '/web/assets');
 
-require_once PATH.'/core/kernel.php' ;
+require_once PATH.'/core/kernel.php';
 
 $start = $_config->_startPage();
 
-require_once _DIR_.'/_auth/_auth.php';
+//require_once _DIR_.'/_auth/_auth.php';
 
 if(!file_exists(_DIR_._VIEW_))
 {

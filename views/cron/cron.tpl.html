@@ -1,0 +1,19 @@
+<div class="form">
+    <input id="name" name="name" value="{% name %}" disabled>
+    <input id="offset" name="offset" type="hidden">
+    <input id="uid" name="uid" value="{% uid %}" type="hidden">
+    <input id="count" name="count" value="{% count %}" type="hidden">
+
+    <div class="progress" style="display: none;">
+        <div class="bar" style="width: 0%;"></div>
+    </div>
+
+    <div class="status">
+        <span>Заугружено: 0</span>
+        <span>Исключено: 0</span>
+        <span>Обработано: 0</span>
+    </div>
+
+    <a href="javascript://" id="runScript"  class="btn" data-action="run">Старт</a>
+    <a href="javascript://" id="refreshScript" class="btn" style="display: none;">Заново</a>
+</div>
