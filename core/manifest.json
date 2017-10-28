@@ -1,6 +1,6 @@
 {
   "base": {
-    "name": "Kernel Project",
+    "name": "Instagram",
     "version": "3.0.6.f0",
     "year": "2017",
     "company": "Quenix Software",
@@ -8,7 +8,7 @@
     "encoding": "UTF-8"
   },
   "_status": {
-    "enabled": true
+    "enabled": false
   },
   "assets": {
     "jquery": "3.x",
