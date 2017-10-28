@@ -3,8 +3,10 @@
 Atom::setup($_config->_getMySQLi());
 Atom::model("category");
 Atom::model("subsections");
+Atom::model("catalog");
 
 $category = category::findAll();
+$catalog = catalog::findAll("ORDER BY `id` DESC");
 
 $_config->title = $_config->_getManifest()->base->name.". Каталог";
 $_config->css[] = _ASSETS_."/css/base.css";
@@ -29,7 +31,7 @@ if(!empty($category)) {
                 foreach ($subsections as $_sub) {
                     if (!empty($_sub->id)) {
 
-                        $menu_subs .= '<li><a href="/sub?type='.$_sub->id.'">'.$_sub->name.'</a></li>';
+                        $menu_subs .= '<li><a href="/catalog?id='.$_sub->id.'">'.$_sub->name.'</a></li>';
 
                     }
                 }
@@ -42,6 +44,32 @@ if(!empty($category)) {
     }
 }
 
+$rus_months = array('Января', 'Февраля', 'Марта', 'Апреля', 'Мая',
+    'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря');
+
+$content = "";
+if(!empty($catalog))
+{
+    foreach ($catalog as $item)
+    {
+        if(!empty($item->id))
+        {
+            $c_html = new Kernel();
+            $c_html->_setHtml(_DIR_._VIEW_.'/items.tpl.html');
+
+            $c_html->_setVar("image_src", $item->imageHighResolutionUrl);
+            $c_html->_setVar("item_caption", $item->caption);
+
+            $f = new Datetime($item->datetime);
+            $month = $f->format('n');
+            $c_html->_setVar("item_date", $f->format('j ' . $rus_months[$month-1] . ' Y'));
+
+            $content .= $c_html->_getHtml();
+        }
+    }
+}
+
 $html->_setVar("nav_menu", $menu);
+$html->_setVar("content", $content);
 
 $_config->body .= $html->_getHtml();
