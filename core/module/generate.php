@@ -10,7 +10,8 @@ class Generate
      * $max - set maximum length after prefix
      * */
 
-    function genRandomString($chars,$max){
+    function genRandomString($chars = false,
+                             $max = false){
         $chars=(!$chars)?"1234567890qazxswedcvfrtgbnhyujmkiolp":$chars;
         $max=(!$max)?10:$max;
         $size=StrLen($chars)-1;
@@ -64,7 +65,7 @@ class Generate
     }
 
     /*
-     * method @str@url
+     * method @str2url
      *
      * $str - set string to convert
      * */

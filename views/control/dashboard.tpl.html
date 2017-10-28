@@ -20,16 +20,16 @@
                         <p>Статистика</p>
                     </a>
                 </li>
-                <li class="category">
-                    <a href="?page=category">
-                        <i class="ti-bookmark"></i>
-                        <p>Разделы</p>
+                <li class="sorted">
+                    <a href="?page=sorted">
+                        <i class="ti-image"></i>
+                        <p>Сортированные</p>
                     </a>
                 </li>
-                <li class="sorter">
-                    <a href="?page=sorter">
+                <li class="unsorted">
+                    <a href="?page=unsorted">
                         <i class="ti-instagram"></i>
-                        <p>Последнее</p>
+                        <p>Несортированные</p>
                     </a>
                 </li>
             </ul>
@@ -61,6 +61,12 @@
                                   {% cat_menu %}
                               </ul>
                         </li>
+                        <!-- <li>
+                            <a href="?page=parser">
+                                <i class="ti-wand"></i>
+                                <p>Парсер</p>
+                            </a>
+                        </li> -->
 						<li>
                             <a href="?page=setting">
 								<i class="ti-settings"></i>
@@ -87,7 +93,7 @@
 
                 </nav>
                 <div class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script>, made by <a href="http://quenix.xyz" target="_blank">Quenix Kernel</a>
+                    &copy; <script>document.write(new Date().getFullYear())</script>, made by <a href="http://quenix.xyz" target="_blank">{% company %}</a>
                 </div>
             </div>
         </footer>

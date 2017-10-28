@@ -139,6 +139,15 @@ class Atom
         }else return false;
     }
 
+    static function calcRows($filter = ""){
+        $query = "SELECT * FROM `".get_called_class()."` ".$filter;
+        $result = self::$db->query($query);
+        self::$stack->push($query." [".$result->num_rows."]");
+        if ($result->num_rows > 0){
+            return $result->num_rows;
+        }else return false;
+    }
+
     public function update(){									//Сохраняем объект - UPDATE
         $id = key(self::_getVars());						//Получаем идентификатор
         if (!isset($this->$id) || empty($this->$id)) return $this->insert();	//Если пусто, добавляем

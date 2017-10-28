@@ -19,3 +19,4 @@ $_config->js[] = _ASSETS_."/js/dashboard/bootstrap-checkbox-radio.js";
 $_config->js[] = _ASSETS_."/js/dashboard/chartist.min.js";
 $_config->js[] = _ASSETS_."/js/dashboard/bootstrap-notify.js";
 $_config->js[] = _ASSETS_."/js/dashboard/paper-dashboard.js";
+$_config->js[] = _ASSETS_."/js/setting/push-data.js";

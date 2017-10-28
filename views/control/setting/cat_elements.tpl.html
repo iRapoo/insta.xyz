@@ -3,9 +3,8 @@
         {% category_name %} <span class="caret"></span></button>
     <ul class="dropdown-menu" role="menu">
         {% subsections %}
-        <li><a href="javascript://">Добавить подраздел</a></li>
+        <li><a href="javascript://" class="btn-add-sub" data-id="{% category_id %}">Добавить подраздел</a></li>
         <li class="divider"></li>
-        <li><a href="javascript://">Редактировать</a></li>
-        <li><a href="javascript://">Удалить</a></li>
+        <li><a href="javascript://" class="btn-del" data-del="category" data-id="{% category_id %}">Удалить</a></li>
     </ul>
 </div>

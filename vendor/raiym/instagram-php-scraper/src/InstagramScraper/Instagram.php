@@ -61,7 +61,7 @@ class Instagram
         return Account::fromAccountPage($userArray['user']);
     }
 
-    public static function getMedias($username, $count = 20, $maxId = '')
+    public static function getMedias($username, $count = 20, $maxDate = 0, $maxId = '')
     {
         $index = 0;
         $medias = [];
@@ -83,7 +83,11 @@ class Instagram
                 if ($index === $count) {
                     return $medias;
                 }
-                $medias[] = Media::fromApi($mediaArray);
+                if(!empty($maxDate)) {
+                    if ($maxDate <= date('y-m-d', Media::fromApi($mediaArray)->createdTime))
+                        $medias[] = Media::fromApi($mediaArray);
+                    else return $medias;
+                }else $medias[] = Media::fromApi($mediaArray);
                 $index++;
             }
             if (count($arr['items']) == 0) {

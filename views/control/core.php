@@ -1,8 +1,9 @@
 <?php
+define("_PAGE_", $_GET['page']);
 
-define("_PAGE_",$_GET['page']);
 Atom::setup($_config->_getMySQLi());
 Atom::model("category");
+Atom::model("subsections");
 
 require_once _DIR_._VIEW_."/assets.php";
 
@@ -29,7 +30,7 @@ foreach ($category as $_cat)
 {
     if(!empty($_cat->id))
     {
-        $cat_menu .= '<li><a href="?page=category&id='.$_cat->id.'">'.$_cat->name.'</a></li>';
+        $cat_menu .= '<li><a href="?page=sorted&id='.$_cat->id.'">'.$_cat->name.'</a></li>';
         $cat_count++;
     }
 }

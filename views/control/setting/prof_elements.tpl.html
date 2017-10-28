@@ -10,12 +10,12 @@
             <li><a href="https://www.instagram.com/{% profile_name %}" target="_blank">{% profile_name %}</a></li>
             <li class="divider"></li>
             {% if profile_status %}
-                <li><a href="#">Остановить</a></li>
+                <li><a href="javascript://" class="btn-stat" data-stat="0" data-id="{% profile_id %}">Остановить</a></li>
             {% else %}
-                <li><a href="#">Запустить</a></li>
+                <li><a href="javascript://" class="btn-stat" data-stat="1" data-id="{% profile_id %}">Запустить</a></li>
             {% endif %}
             <li class="divider"></li>
-            <li><a href="#">Удалить</a></li>
+            <li><a href="javascript://" class="btn-del" data-del="profiles" data-id="{% profile_id %}">Удалить</a></li>
         </ul>
     </div>
 </div>

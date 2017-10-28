@@ -1,8 +1,5 @@
 <?php
-Atom::model("subsections");
 Atom::model("profiles");
-
-$_config->js[] = _ASSETS_."/js/setting/push-data.js";
 
 $page_name = "Настройки";
 
@@ -23,10 +20,18 @@ foreach ($category as $_cat)
         if(!empty($subsection))
         foreach ($subsection as $_sub)
         {
-            if(!empty($_sub->id))
-                $sub_item .= '<li><a href="javascript://">'.$_sub->name.'</a></li>';
+            if(!empty($_sub->id)) {
+
+                $sub_item .= '<li class="dropdown-submenu">
+                                    <a tabindex="-1" href="javascript://">' . $_sub->name . '</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="javascript://" class="btn-del" data-del="subsection" data-id="' . $_sub->id . '">Удалить</a></li>
+                                    </ul>
+                                </li>';
+            }
         }
 
+        $html->_setVar("category_id", $_cat->id);
         $html->_setVar("subsections", $sub_item);
         $html->_setVar("category_name", $_cat->name);
         $_category .= $html->_getHtml();
@@ -49,6 +54,7 @@ foreach ($profiles as $_prof)
         $html->_setVar("profile_status", ($_prof->status=="1") ? "success" : "danger" );
         $html->_setIf("profile_status", ($_prof->status=="1"));
         $html->_setVar("profile_name", $_prof->name);
+        $html->_setVar("profile_id", $_prof->id);
         $_profiles .= $html->_getHtml();
     }
 }

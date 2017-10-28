@@ -1,6 +1,4 @@
 <?php
-define('PATH', $_SERVER['DOCUMENT_ROOT']);
-require_once PATH.'/core/kernel.php';
 
 use InstagramScraper\Instagram;
 
@@ -8,47 +6,85 @@ Atom::setup($_config->_getMySQLi());
 Atom::model("profiles");
 Atom::model("nosorted");
 
-
-$_config->css[] = _ASSETS_."/css/cron/scriptoffset.css";
-$_config->js[] = _ASSETS_."/js/cron/scriptoffset.js";
-
 $profiles = profiles::findAll("WHERE `status` = 1");
 
-$_config->body .= '<div class="_cron_cont">';
+$now = date("y-m-d");
+$deteTime = date("Y.m.d H:i");
 
-$c = 0;
+$file = _DIR_._VIEW_.'/log.txt';
+$current = file_get_contents($file);
+$current .= "----------------".$deteTime."------------------\n";
 
+set_time_limit(3600);
+
+$j = 0;
 if(!empty($profiles))
 {
     foreach ($profiles as $item)
     {
         if(!empty($item->id))
         {
+
             $SQLi = $_config->_getMySQLi()->query("SELECT * FROM `nosorted` WHERE `uid` = '{$item->id}'");
             $count = mysqli_num_rows($SQLi);
 
-            $account = Instagram::getAccount($item->name);
+            $date = new DateTime('-15 days');
+            $now = ($count>0) ? $now : $date->format('y-m-d');
 
-            if(!empty($_COOKIE['_offset'.$item->id])){
-                $offset = $_COOKIE['_offset'.$item->id]+($account->mediaCount-$count);
-                setcookie("_offset".$item->id, $offset, time() + 18000, "/");
+            $medias = Instagram::getMedias($item->name, 500, $now);
+
+            $i = 0;
+            foreach ($medias as $media){
+                $res = insertData($item->id, $medias, $i);
+                $i++;
             }
 
-            $need = (!empty($_COOKIE['_offset'.$item->id])) ? $account->mediaCount : ($account->mediaCount-$count);
+            $current .= $item->name." [".$i."]\n";
+            echo $item->name." [".$i."]<br>";
 
-            $html = new Kernel();
-            $html->_setHtml(_DIR_ . _VIEW_ . "/cron.tpl.html");
-            $html->_setVar("uid", $item->id);
-            $html->_setVar("name", $item->name);
-            $html->_setVar("count", $need);
-            $_config->body .= $html->_getHtml();
+            sleep(0.3);
 
-            $c++;
+            $j += $i;
 
         }
     }
 }
 
-$_config->body .= '<c>'.$c.'</c></div>';
+$current .= "Всего: ".$j."\n";
+
+file_put_contents($file, $current);
+
+function insertData($uid, $medias, $offset){
+    $nosorted = new nosorted();
+    $nosorted->uid = $uid;
+    $nosorted->type = $medias[$offset]->type;
+
+    $nosorted->link = $medias[$offset]->link;
 
 
+    $file = downloadFile($medias[$offset]->imageHighResolutionUrl);
+
+    $nosorted->imageHighResolutionUrl = $file;
+    $nosorted->active = (!$file) ? 0 : 1;
+
+    $nosorted->caption = $medias[$offset]->caption;
+    $nosorted->datetime = date('y-m-d', $medias[$offset]->createdTime);
+
+    return $nosorted->insert();
+}
+
+function downloadFile ($URL) {
+    $uploaddir = PATH."/data/unsorted/";
+    $uploadfile = $uploaddir.basename($URL);
+
+    // Копируем файл в files
+    if (@fopen($URL, "r") AND strlen($URL) > 10) {
+        if (copy($URL, $uploadfile)) {
+            return basename($URL);
+        } else {
+            return false;
+        }
+    }else {
+        return false;
+    }
+}

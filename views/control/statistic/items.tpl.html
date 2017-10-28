@@ -1,0 +1,111 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-4 col-sm-4 col-md-3 col-lg-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Статистика за неделю</h3>
+                </div>
+                <div class="panel-body">
+
+                    <script>
+                        $(function() {
+                            Morris.Donut({
+                                element: 'donut-dia',
+                                data: [
+                                    {% donut %}
+                                ]
+                            });
+                        });
+
+                    </script>
+
+                    <div id="donut-dia"></div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-4 col-sm-4 col-md-3 col-lg-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Статистика за месяц</h3>
+                </div>
+                <div class="panel-body">
+
+                    <script>
+                        $(function() {
+                            Morris.Donut({
+                                element: 'donut2-dia',
+                                data: [
+                                    {% donut2 %}
+                        ]
+                        });
+                        });
+
+                    </script>
+
+                    <div id="donut2-dia"></div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-4 col-sm-4 col-md-3 col-lg-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Статистика за 180 дней</h3>
+                </div>
+                <div class="panel-body">
+
+                    <script>
+                        $(function() {
+                            Morris.Donut({
+                                element: 'donut3-dia',
+                                data: [
+                                    {% donut3 %}
+                                ]
+                            });
+                        });
+
+                    </script>
+
+                    <div id="donut3-dia"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Статистика по месяцам</h3>
+                </div>
+                <div class="panel-body">
+
+                <script>
+                    $(function() {
+                        Morris.Line({
+                            element: 'line-dia',
+                            data: [
+                                {% line %}
+                            ],
+                            xkey: 'y',
+                            ykeys: ['a'],
+                            labels: ['Изображений получено']
+                        });
+
+                    });
+
+                </script>
+
+                <div id="line-dia"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
