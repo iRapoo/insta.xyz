@@ -7,12 +7,13 @@ Atom::model("catalog");
 Atom::model("nosorted");
 
 $ID_IMG = $_POST['data-img'];
+$ID_SUB = $_POST['data'];
 
 $nosorted = nosorted::findById($ID_IMG);
 
 $catalog = new catalog();
 
-$catalog->sid = $nosorted->id;
+$catalog->sid = $ID_SUB;
 $catalog->uid = $nosorted->uid;
 $catalog->imageHighResolutionUrl = $nosorted->imageHighResolutionUrl;
 $catalog->link = $nosorted->link;

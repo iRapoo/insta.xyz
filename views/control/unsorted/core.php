@@ -80,8 +80,8 @@ $content_block .= $html_block->_getHtml();
 $content_block .= '</div></div>';
 
 if($p_active) {
-    $p_sum = nosorted::calcRows();
-    $p_total = floor($p_sum / $p_count);
+    $p_sum = nosorted::calcRows("WHERE `active` = 1");
+    $p_total = round($p_sum / $p_count);
 
     if ($p_now < $p_now + 2) {
         $paging = "";
@@ -135,5 +135,8 @@ if($p_active) {
     $pagination->_setVar("paging", $paging);
     $pagination->_setVar("paging_next", $paging_next);
     $pagination->_setVar("paging_total", $paging_total);
-    $content_block .= $pagination->_getHtml();
+
+    $pagination->_setVar("paging-size", 8);
+
+    if($p_total>0) $content_block .= $pagination->_getHtml();
 }

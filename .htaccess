@@ -9,6 +9,8 @@ RewriteEngine on
 RewriteRule ^$ /views/controller.php?view=base [QSA,L]
 #Роутинг вьюшек
 RewriteRule ^([A-Za-z0-9-._]+)$ /views/controller.php?view=$1 [QSA,L]
+#Роутинг каталога
+RewriteRule ^catalog/([A-Za-z0-9-._]+)/([A-Za-z0-9-._]+)$ /views/controller.php?view=catalog&cat=$1&sub=$2 [QSA,L]
 
 # 1 Month for most static assets
 <filesMatch ".(css|jpg|jpeg|png|gif|js|ico)$">
