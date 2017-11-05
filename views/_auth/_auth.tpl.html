@@ -1,42 +1,8 @@
 <div id="_reg_block">
-    {% if login %}
-        <button type="button" class="btn _auth_btn btn-success">
-            {% user_login %}
-        </button>
-    {% else %}
-        <button type="button" class="btn _auth_btn btn-primary">Войти</button>
-    {% endif %}
     <div class="_auth_panel">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-lg-12">
-                {% if login %}
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 login-box">
-                            <div class="well well-sm text-nowrap">
-                                <div class="row">
-                                    <div class="col-sm-6 col-md-6">
-                                        <img src="http://placehold.it/500x500" alt="" class="img-circle img-responsive" />
-                                    </div>
-                                    <div class="col-sm-6 col-md-6">
-                                        <h4>{% user_login %}</h4>
-                                        <p>
-                                            <i class="glyphicon glyphicon-envelope"></i> {% user_email %}
-                                            <br />
-                                            <i class="glyphicon glyphicon-phone"></i> {% user_phone %}
-                                            <br />
-                                            <i class="glyphicon glyphicon-gift"></i> {% user_birthday %}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <form id="_auth_form_exit" role="form" method="post" action="/_auth">
-                                <input type="hidden" name="auth_exit">
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                {% else %}
+                <div class="text-center text-primary"><h3>Авторизация</h3></div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 login-box">
@@ -49,21 +15,12 @@
                                     <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
                                     <input type="password" class="form-control" name="password" placeholder="Ваш пароль" required />
                                 </div>
-                                <p>
-                                    <a href="/recover">Забыли свой пароль?</a></p>
-                                У вас нет аккаунта? <a href="/registration">Регистрация</a>
                             </form>
                         </div>
                     </div>
                 </div>
-                {% endif %}
                 <div class="panel-body">
                     <div class="row">
-                        {% if login %}
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-
-                        </div>
-                        {% else %}
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <div class="checkbox">
                                 <label>
@@ -72,15 +29,9 @@
                                 </label>
                             </div>
                         </div>
-                        {% endif %}
                         <div class="col-xs-6 col-sm-6 col-md-6 btn-right">
-                            {% if login %}
-                            <button type="submit" form="_auth_form_exit" class="btn btn-labeled btn-danger">
-                                <span class="btn-label"><i class="glyphicon glyphicon-remove"></i></span>Выход</button>
-                            {% else %}
                             <button type="submit" form="_auth_form" class="btn btn-labeled btn-success">
                                 <span class="btn-label"><i class="glyphicon glyphicon-ok"></i></span>Войти</button>
-                            {% endif %}
                         </div>
                     </div>
                 </div>

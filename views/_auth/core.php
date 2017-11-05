@@ -10,7 +10,7 @@ if(isset($_POST['auth_exit'])){
     if (@$_SERVER['HTTP_REFERER'] != null) {
         header("Location: ".$_SERVER['HTTP_REFERER']);
     }else{
-        header("Location: /");
+        header("Location: /control");
     }
     exit();
 }
@@ -21,11 +21,10 @@ Atom::model("users");
 $login = $_POST['login'];
 $password = $_POST['password'];
 
-$need = [ "id", "login", "birthday", "email", "phone", "sex" ];
+$need = [ "id", "login" ];
 $_ak = $_COOKIE['_ak'];
 
-$db_user = users::findByTag("login", $login, "OR `email` = '{$login}' 
-                                                         OR `access_key` = '{$_ak}' ");
+$db_user = users::findByTag("login", $login, "OR `access_key` = '{$_ak}' ");
 
 if(!empty($db_user)) {
     foreach ($db_user as $user) {
@@ -45,7 +44,7 @@ if(!empty($db_user)) {
     if (@$_SERVER['HTTP_REFERER'] != null) {
         header("Location: ".$_SERVER['HTTP_REFERER']);
     }else{
-        header("Location: /");
+        header("Location: /control");
     }
     exit();
 }

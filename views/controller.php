@@ -14,8 +14,6 @@ require_once PATH.'/core/kernel.php';
 
 $start = $_config->_startPage();
 
-//require_once _DIR_.'/_auth/_auth.php';
-
 if(!file_exists(_DIR_._VIEW_))
 {
     require_once PATH.'/core/err/404.php';

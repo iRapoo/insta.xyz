@@ -28,6 +28,7 @@ foreach ($category as $_cat)
                                         <li><a href="javascript://" class="btn-del" data-del="subsection" data-id="' . $_sub->id . '">Удалить</a></li>
                                     </ul>
                                 </li>';
+
             }
         }
 
@@ -65,7 +66,16 @@ else
 unset($html);
 
 $html = new Kernel();
+$html->_setHtml(_DIR_ . _VIEW_ . "/setting/access.tpl.html");
+
+$html->_setVar("login", $_SESSION['login']);
+
+$_access .= $html->_getHtml();
+unset($html);
+
+$html = new Kernel();
 $html->_setHtml(_DIR_._VIEW_."/setting/setting.tpl.html");
 $html->_setVar("category_elements", $_category);
 $html->_setVar("profiles_elements", $_profiles);
+$html->_setVar("access_elements", $_access);
 $content_block = $html->_getHtml();

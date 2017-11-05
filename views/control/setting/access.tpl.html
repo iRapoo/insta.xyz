@@ -1,0 +1,17 @@
+<div class="row">
+    <form id="_update_form" role="form" method="post" action="javascript://">
+        <div class="col-xs-6 col-sm-6 col-md-6 login-box">
+            <div class="input-group border-input">
+                <span class="input-group-addon"><i class="ti-user"></i></span>
+                <input value="{% login %}" type="text" class="form-control border-input" name="login" placeholder="Имя пользователя" required autofocus />
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 login-box">
+            <div class="input-group border-input">
+                <span class="input-group-addon"><i class="ti-lock"></i></span>
+                <input type="password" class="form-control border-input" name="password" placeholder="Ваш пароль" required />
+            </div>
+        </div>
+        <button type="submit" form="_update_form" class="btn btn-save btn-default">СОХРАНИТЬ</button>
+    </form>
+</div>

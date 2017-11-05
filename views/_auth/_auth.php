@@ -5,7 +5,6 @@ if(!empty($_COOKIE['_ak']) AND
     header("Location: /_auth");
 
 $_config->css[] = _ASSETS_."/css/_auth.css";
-$_config->js[] = _ASSETS_."/js/_auth_panel.js";
 
 $rus_months = array('Января', 'Февраля', 'Марта', 'Апреля', 'Мая',
     'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря');

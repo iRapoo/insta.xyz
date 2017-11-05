@@ -4,6 +4,12 @@ define("_PAGE_", $_GET['page']);
 Atom::setup($_config->_getMySQLi());
 Atom::model("category");
 Atom::model("subsections");
+Atom::model("users");
+
+if($_SESSION['rank']!='a' AND users::calcRows()>0){
+    header("Location: /auth");
+    exit();
+}
 
 require_once _DIR_._VIEW_."/assets.php";
 

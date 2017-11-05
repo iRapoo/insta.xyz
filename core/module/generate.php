@@ -20,7 +20,7 @@ class Generate
         while($max--)
             $name.= $chars[rand(0,$size)];
 
-        return ($qw) ? "qx_".$name : $name;
+        return ($qx) ? "qx_".$name : $name;
     }
 
     function setHideKey($string){

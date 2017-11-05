@@ -4,9 +4,11 @@
 #_reg_block
 {
     position: absolute;
+    width: 100%; height: 100%;
     left: 15px; top: 15px;
     z-index: 1000;
     box-sizing: border-box;
+
 }
 
 /*
@@ -18,25 +20,13 @@
  */
 ._auth_panel
 {
-    display: none;
-    position: absolute;
+    position: relative;
     padding-left: -20px;
     background-color: #ffffff;
-    left: 10px; top: 50px;
-    width: 350px;
+    left: 50%; top: 50%;
+    width: 350px; height: 250px;
+    margin-left: -175px; margin-top: -125px;
     box-shadow: 0 2px 10px rgba(0,0,0,.2);
-}
-
-._auth_panel::after, ._auth_panel::before {
-    content: '';
-    position: absolute;
-    background-color: #ffffff;
-    left: 15px; top: -7px;
-    width: 15px; height: 15px;
-    box-shadow: 0 2px 10px rgba(0,0,0,.2); /* Добавляем тень для уголка */
-    z-index: -1; /* Прячем за основным блоком */
-    transform: rotate(45deg); /* Поворачиваем на 45º */
-    -webkit-transform: rotate(45deg);
 }
 
 ._auth_panel::before {

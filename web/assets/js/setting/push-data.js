@@ -135,4 +135,30 @@ $(function() {
 
     });
 
+    $('.btn-save').click(function() {
+
+        var _data_login = $('#_update_form input').eq(0).val();
+        var _data_password = $('#_update_form input').eq(1).val();
+
+        $.ajax({
+            type: "POST",
+            url: "/views/_auth/_update.php",
+            data: { "login" :  _data_login, "password": _data_password },
+            dataType: "text",
+            success: function(data) {
+                $('#myModal').modal('show');
+
+                if(data)
+                {
+                    $('.modal-body').html("<p>Успешно обновлено!</p>");
+                }
+                else
+                {
+                    $('.modal-body').html("<p>Ошибка, попробуйте еще раз...</p>");
+                }
+            }
+        });
+
+    });
+
 });
