@@ -6,9 +6,10 @@
         <ul class="dropdown-menu pull-right">
             <li><a href="/p/{% img_id %}" target="_blank">Просмотреть</a></li>
             <li class="divider"></li>
-            <li><a tabindex="-1"  href="javascript://" class="btn-edit">Редактировать</a></li>
+            <li><a tabindex="-1"  href="javascript://" class="btn-edit" data-id="{% img_id %}">Редактировать</a></li>
             </li>
             <li><a href="javascript://" class="btn-del" data-del="sorted" data-id="{% img_id %}">Удалить</a></li>
         </ul>
+        <div class="caption_content" data-id="{% img_id %}" style="display: none;">{% caption %}</div>
     </div>
 </div>

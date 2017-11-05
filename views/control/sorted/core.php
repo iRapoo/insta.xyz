@@ -45,6 +45,7 @@ else {
                 $html->_setVar("category", $_category);
                 $html->_setVar("image_link", $item->link);
                 $html->_setVar("image", "/data/sorted/".$item->imageHighResolutionUrl);
+                $html->_setVar("caption", $item->caption);
 
                 $image_block .= $html->_getHtml();
 
