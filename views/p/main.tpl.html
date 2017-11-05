@@ -1,0 +1,28 @@
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="/">{% name %}</a>
+		</div>
+		<div class="navbar-collapse collapse" style="height: 1px;">
+			<ul class="nav navbar-nav">
+				{% nav_menu %}
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	{% content %}
+</div>
+
+<div id="footer">
+	<div class="container">
+		<p class="text-muted">&copy; <script>document.write(new Date().getFullYear())</script>, made by <a href="http://quenix.xyz" target="_blank">{% company %}</a></p>
+	</div>
+</div>

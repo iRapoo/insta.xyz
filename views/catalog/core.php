@@ -4,6 +4,7 @@ Atom::setup($_config->_getMySQLi());
 Atom::model("category");
 Atom::model("subsections");
 Atom::model("catalog");
+Atom::model("views");
 
 $SORT = (!empty($_GET['sort'])) ? $_GET['sort'] : 30;
 
@@ -87,8 +88,10 @@ if(!empty($catalog))
             $c_html = new Kernel();
             $c_html->_setHtml(_DIR_.'/base/items.tpl.html');
 
+            $c_html->_setVar("p_link", Generate::sethideKey($item->id));
             $c_html->_setVar("image_src", $item->imageHighResolutionUrl);
             $c_html->_setVar("item_caption", $item->caption);
+            $c_html->_setVar("count_view", views::calcRows("WHERE `cid` = '{$item->id}'"));
 
             $f = new Datetime($item->datetime);
             $month = $f->format('n');
