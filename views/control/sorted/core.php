@@ -41,7 +41,7 @@ else {
                 $html = new Kernel();
                 $html->_setHtml(_DIR_._VIEW_."/sorted/image.tpl.html");
 
-                $html->_setVar("img_id", $item->id);
+                $html->_setVar("img_id", Generate::setHideKey($item->id));
                 $html->_setVar("category", $_category);
                 $html->_setVar("image_link", $item->link);
                 $html->_setVar("image", "/data/sorted/".$item->imageHighResolutionUrl);

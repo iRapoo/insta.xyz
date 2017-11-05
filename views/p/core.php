@@ -6,6 +6,8 @@ Atom::model("subsections");
 Atom::model("catalog");
 Atom::model("views");
 
+$_config->title = "Просмотр.";
+
 $ID = Generate::getHideKey($_GET['id']);
 
 $SORT = (!empty($_GET['sort'])) ? $_GET['sort'] : 30;
