@@ -1,0 +1,16 @@
+<tr>
+    <td>{% profile_id %}</td>
+    <td>@{% profile_name %}</td>
+    <td>{% profile_date %}</td>
+    <td>{% profile_city %}</td>
+    <td>{% profile_load %}</td>
+    <td>{% profile_public %}</td>
+    <td>{% profile_phone %}</td>
+    <td>{% profile_email %}</td>
+    <td>
+        <label class="switch">
+            <input type="checkbox" {% profile_status %}>
+            <span class="slider round"></span>
+        </label>
+    </td>
+</tr>
