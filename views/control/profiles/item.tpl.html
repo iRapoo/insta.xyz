@@ -1,6 +1,8 @@
-<tr>
-    <td>{% profile_id %}</td>
-    <td>@{% profile_name %}</td>
+<tr data-id="{% profile_id %}">
+    <td>{% profile_num %}</td>
+    <td><img src="{% profile_photo %}" width="25" height="25" style="border-radius: 50px;">
+        <a href="https://www.instagram.com/{% profile_name %}" target="_blank">@{% profile_name %}</a>
+        <a href="javascript://" class="_delete ti-trash text-primary" data-id="{% profile_id %}"></a></td>
     <td>{% profile_date %}</td>
     <td>{% profile_city %}</td>
     <td>{% profile_load %}</td>
@@ -10,7 +12,7 @@
     <td>
         <label class="switch">
             <input type="checkbox" {% profile_status %}>
-            <span class="slider round"></span>
+            <span class="slider round" data-id="{% profile_id %}"></span>
         </label>
     </td>
 </tr>

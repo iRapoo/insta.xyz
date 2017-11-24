@@ -3,6 +3,10 @@
         <div class="card">
             <div class="header">
                 <h4 class="title">Управление профилями</h4>
+                <div class="text-right" style="position: absolute; top: 15px; right: 15px;">
+                    <i class="ti-new-window"></i>
+                    <a href="javascript://" class="new-profile">НОВЫЙ ПРОФИЛЬ</a>
+                </div>
                 <!-- <p class="category">Here is a subtitle for this table</p> -->
             </div>
             <div class="content table-responsive table-full-width">
@@ -24,5 +28,64 @@
                 </table>
             </div>
         </div>
+    </div>
+</div>
+
+<div class="modal fade" id="newProfile" role="dialog" data-backdrop="false">
+    <div class="modal-dialog" role="document">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Добавление нового профиля</h4>
+            </div>
+            <div class="modal-body">
+                <form id="newProfileForm" class="newProfileForm">
+                    <div class="form-group">
+                        <label for="inputName">Имя страницы:</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">@</span>
+                            <input type="text" class="form-control" id="inputName" name="name" placeholder="Имя пользователя" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputCity">Город:</label>
+                        <div class="input-group">
+                            <span class="input-group-addon ti-location-pin"></span>
+                            <input type="text" class="form-control" id="inputCity" name="city" placeholder="Город">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputContact">Контактные данные:</label>
+                        <div class="input-group">
+                            <span class="input-group-addon ti-world"></span>
+                            <input type="text" class="form-control" id="inputContact" name="contact" placeholder="Контактные данные">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail">Почта:</label>
+                        <div class="input-group">
+                            <span class="input-group-addon ti-email"></span>
+                            <input type="text" class="form-control" id="inputEmail" name="email" placeholder="Почта">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPhone">Телефон:</label>
+                        <div class="input-group">
+                            <span class="input-group-addon ti-mobile"></span>
+                            <input type="text" class="form-control" id="inputPhone" name="phone" placeholder="Телефон">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                <button type="submit" form="newProfileForm" class="btn btn-add btn-primary">Добавить</button>
+            </div>
+
+        </div>
+
     </div>
 </div>

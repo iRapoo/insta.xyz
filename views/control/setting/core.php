@@ -76,6 +76,6 @@ unset($html);
 $html = new Kernel();
 $html->_setHtml(_DIR_._VIEW_."/setting/setting.tpl.html");
 $html->_setVar("category_elements", $_category);
-$html->_setVar("profiles_elements", $_profiles);
+//$html->_setVar("profiles_elements", $_profiles);
 $html->_setVar("access_elements", $_access);
 $content_block = $html->_getHtml();
