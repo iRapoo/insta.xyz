@@ -3,37 +3,93 @@
 namespace InstagramScraper\Model;
 
 
-class Location
+class Location extends AbstractModel
 {
-    public $id;
-    public $hasPublicPage;
-    public $name;
-    public $slug;
+    /**
+     * @var array
+     */
+    protected static $initPropertiesMap = [
+        'id' => 'id',
+        'has_public_page' => 'hasPublicPage',
+        'name' => 'name',
+        'slug' => 'slug',
+        'lat' => 'lat',
+        'lng' => 'lng',
+    ];
+    /**
+     * @var
+     */
+    protected $id;
+    /**
+     * @var
+     */
+    protected $hasPublicPage;
+    /**
+     * @var
+     */
+    protected $name;
+    /**
+     * @var
+     */
+    protected $slug;
+    /**
+     * @var
+     */
+    protected $lng;
+    /**
+     * @var
+     */
+    protected $lat;
+    /**
+     * @var bool
+     */
+    protected $isLoaded = false;
 
-    public $lng;
-    public $lat;
-
-    function __construct()
+    /**
+     * @return mixed
+     */
+    public function getId()
     {
+        return $this->id;
     }
 
-    public static function makeLocation($locationArray)
+    /**
+     * @return mixed
+     */
+    public function getHasPublicPage()
     {
-        $instance = new self();
-        $instance->id = $locationArray['id'];
-        $instance->hasPublicPage = $locationArray['has_public_page'];
-        if (isset($locationArray['name'])) {
-            $instance->name = $locationArray['name'];
-        }
-        if (isset($locationArray['slug'])) {
-            $instance->slug = $locationArray['slug'];
-        }
-        if (isset($locationArray['lat'])) {
-            $instance->lat = $locationArray['lat'];
-        }
-        if (isset($locationArray['lng'])) {
-            $instance->lng = $locationArray['lng'];
-        }
-        return $instance;
+        return $this->hasPublicPage;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLng()
+    {
+        return $this->lng;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLat()
+    {
+        return $this->lat;
     }
 }
