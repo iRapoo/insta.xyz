@@ -31,7 +31,10 @@ if(!empty($profiles))
             $date = new DateTime('-15 days');
             $now = ($count>0) ? $now : $date->format('y-m-d');
 
-            $medias = Instagram::getMedias($item->name, 500, $now);
+            $instagram = new Instagram();
+            $medias = $instagram->getMedias($item->name, 500, $now);
+
+            //print_r($medias);
 
             $i = 0;
             foreach ($medias as $media){
@@ -57,18 +60,18 @@ file_put_contents($file, $current);
 function insertData($uid, $medias, $offset){
     $nosorted = new nosorted();
     $nosorted->uid = $uid;
-    $nosorted->type = $medias[$offset]->type;
+    $nosorted->type = $medias[$offset]->getType();
 
-    $nosorted->link = $medias[$offset]->link;
+    $nosorted->link = $medias[$offset]->getLink();
 
 
-    $file = downloadFile($medias[$offset]->imageHighResolutionUrl);
+    $file = downloadFile($medias[$offset]->getImageHighResolutionUrl());
 
     $nosorted->imageHighResolutionUrl = $file;
     $nosorted->active = (!$file) ? 0 : 1;
 
-    $nosorted->caption = $medias[$offset]->caption;
-    $nosorted->datetime = date('y-m-d', $medias[$offset]->createdTime);
+    $nosorted->caption = $medias[$offset]->getCaption();
+    $nosorted->datetime = date('y-m-d', $medias[$offset]->getCreatedTime());
 
     return $nosorted->insert();
 }
