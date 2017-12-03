@@ -28,18 +28,99 @@ code {
 	font-size: 80%;
 }
 
+.navbar-header img {
+	float: left;
+	width: 50px; margin-top: 5px;
+	margin-right: 10px;
+	padding-right: 10px;
+	border-right: 2px solid #CCC;
+}
+
+.navbar-brand {
+	font-size: 18pt;
+	color: #0E90D2 !important;
+}
+
+.navbar-header span {
+	display: inline-block;
+	width: 500px;
+	margin-top: 18px;
+	color: #777;
+}
+
+.btn-follow {
+	position: relative;
+	margin-left: 345px;
+	margin-top: 10px;
+	float: right;
+}
+
+.filter-color {
+	position: absolute;
+	display: inline-block;
+}
+
+.filter-color a {
+	float: left;
+	text-decoration: none;
+	width: 20px; height: 20px;
+	margin: 0 3px 0 3px;
+	text-align: center;
+	border: 1px solid #CCC;
+	color: #777;
+}
+
+.filter-color a:first-child {
+	width: 100px;
+}
+
 .col-center-block {
-	float: none;
-	display: block;
+	display: inline-block;
 	margin: 0 auto;
+}
+
+.container-items {
+	width: 85%;
+	float: right;
+}
+
+.container-menu {
+	float: left;
+	width: 15%;
+	height: 100%;
+}
+
+.container-menu .nav {
+	height: 100%;
+	color: #777;
+}
+
+.container-menu .nav a {
+	color: #777;
 }
 
 .panel-body, .image_view {
 	padding: 0px !important;
+	overflow: hidden;
+}
+
+.image-panel {
+	height: 200px;
+}
+
+.image-panel img {
+	width: 100%;
 }
 
 .panel-footer {
 	background: #ffffff;
+	height: 120px;
+}
+
+.caption_view {
+	width: 100%;
+	max-height: 55px;
+	overflow: hidden;
 }
 
 .item_image img {
@@ -51,6 +132,13 @@ code {
 	overflow: auto;
 }
 
+.category_view {
+	display: inline-block;
+	width: 100%;
+	font-size: 8pt;
+	padding: 0px 0px 0px 0px;
+}
+
 .date_view {
 	display: inline-block;
 	width: 100%;
@@ -58,7 +146,7 @@ code {
 	padding: 10px 0px 10px 0px;
 }
 
-.date_view .text-left {
+.category_view .text-left, .date_view .text-left {
 	float: left;
 }
 
@@ -73,12 +161,12 @@ code {
 	width: 16px;
 }
 
-.date_view .text-right {
+.category_view .text-right, .date_view .text-right {
 	color: #777;
 	float: right;
 }
 
-.date_view .text-right:before {
+.category_view .text-right:before, .date_view .text-right:before {
 	content: " ";
 	color: #fff;
 	float: left;

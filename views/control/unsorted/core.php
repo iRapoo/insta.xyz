@@ -4,6 +4,7 @@ Atom::setup($_config->_getMySQLi());
 Atom::model("profiles");
 Atom::model("nosorted");
 
+
 $page_name = "Несортированные";
 
 $p_now = (isset($_GET['p'])) ? $_GET['p'] : 1;
@@ -13,8 +14,7 @@ $p_start = ($p_count*$p_now)-$p_count;
 $nosorted = nosorted::findAll("WHERE `active` = 1 ORDER BY `datetime` DESC LIMIT $p_start, $p_count");
 $p_active = true;
 
-$content_block .= '<div class="container">
-    <div class="row">';
+$content_block .= '<div class="container"><div class="row">';
 
 $html_block = new Kernel();
 $html_block->_setHtml(_DIR_._VIEW_."/unsorted/block.tpl.html");

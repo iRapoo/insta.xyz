@@ -1,22 +1,23 @@
-<div class="row">
-    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-6 col-center-block">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <a href="/p/{% p_link %}">
-                    <div class="item_image">
-                        <img src="/data/sorted/{% image_src %}">
-                    </div>
-                </a>
+<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 col-center-block">
+    <div class="panel panel-default">
+        <div class="panel-body image-panel">
+            <a href="/p/{% p_link %}">
+                <div class="item_image">
+                    <img src="/data/sorted/{% image_src %}">
+                </div>
+            </a>
+        </div>
+        <div class="panel-footer">
+            <div class="panel-heading category_view">
+                <div class="text-left">
+                    <font  color="#777">{% item_category %}</font>
+                </div>
+                <div class="text-right">{% count_view %}</div>
             </div>
-            <div class="panel-footer">
-                <div class="panel-heading date_view">
-                    <div class="text-left">
-                        <font  color="#777">{% item_date %}</font>
-                    </div>
-                    <div class="text-right">{% count_view %}</div>
-                </div><br><br>
+            <div class="caption_view">
                 {% item_caption %}
             </div>
+            <a href="/p/{% p_link %}">Посмотреть подробнее...</a>
         </div>
     </div>
 </div>

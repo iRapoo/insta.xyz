@@ -5,6 +5,7 @@ Atom::model("category");
 Atom::model("subsections");
 Atom::model("catalog");
 Atom::model("views");
+Atom::model("profiles");
 
 $_config->title = "Просмотр.";
 
@@ -43,7 +44,10 @@ if(!empty($category)) {
                 foreach ($subsections as $_sub) {
                     if (!empty($_sub->id)) {
 
-                        $menu_subs .= '<li><a href="/catalog/'.strtolower(Generate::rus2translit($_cat->name)).'/'.strtolower(Generate::rus2translit($_sub->name)).'">'.$_sub->name.'</a></li>';
+                        $cat_count = catalog::calcRows("WHERE `sid` = '{$_sub->id}'");
+                        $cat_count = (!empty($cat_count)) ? $cat_count : 0;
+
+                        $menu_subs .= '<li><a href="/catalog/'.strtolower(Generate::rus2translit($_cat->name)).'/'.strtolower(Generate::rus2translit($_sub->name)).'">'.$_sub->name." (".$cat_count.')</a></li>';
 
                     }
                 }
@@ -76,6 +80,8 @@ if(!empty($catalog->id))
     $c_html->_setVar("image_src", $catalog->imageHighResolutionUrl);
     $c_html->_setVar("item_caption", $catalog->caption);
     $c_html->_setVar("count_view", views::calcRows("WHERE `cid` = '{$ID}'"));
+    $c_html->_setVar("profile_name", profiles::findById($catalog->uid)->name);
+    $c_html->_setVar("profile_contact", profiles::findById($catalog->uid)->contact);
 
     $f = new Datetime($catalog->datetime);
     $month = $f->format('n');

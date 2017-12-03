@@ -17,7 +17,7 @@ $p_start = ($p_count*$p_now)-$p_count;
 $catalog = catalog::findAll("WHERE `datetime` > (NOW() - INTERVAL $SORT DAY) AND `active` = 1 ORDER BY `datetime` DESC LIMIT $p_start, $p_count");
 $p_active = true;
 
-$_config->title = "Каталог";
+$_config->title = "Главная";
 $_config->css[] = _ASSETS_."/css/base.css";
 
 $html = new Kernel();
@@ -40,7 +40,10 @@ if(!empty($category)) {
                 foreach ($subsections as $_sub) {
                     if (!empty($_sub->id)) {
 
-                        $menu_subs .= '<li><a href="/catalog/'.strtolower(Generate::rus2translit($_cat->name)).'/'.strtolower(Generate::rus2translit($_sub->name)).'">'.$_sub->name.'</a></li>';
+                        $cat_count = catalog::calcRows("WHERE `sid` = '{$_sub->id}'");
+                        $cat_count = (!empty($cat_count)) ? $cat_count : 0;
+
+                        $menu_subs .= '<li><a href="/catalog/'.strtolower(Generate::rus2translit($_cat->name)).'/'.strtolower(Generate::rus2translit($_sub->name)).'">'.$_sub->name." (".$cat_count.')</a></li>';
 
                     }
                 }
@@ -68,12 +71,13 @@ if(!empty($catalog))
 
             $c_html->_setVar("p_link", Generate::sethideKey($item->id));
             $c_html->_setVar("image_src", $item->imageHighResolutionUrl);
-            $c_html->_setVar("item_caption", $item->caption);
+            $c_html->_setVar("item_caption", substr($item->caption, 0, 140));
             $c_html->_setVar("count_view", views::calcRows("WHERE `cid` = '{$item->id}'"));
 
             $f = new Datetime($item->datetime);
             $month = $f->format('n');
             $c_html->_setVar("item_date", $f->format('j ' . $rus_months[$month-1] . ' Y'));
+            $c_html->_setVar("item_category", category::findById(subsections::findById($item->sid)->cid)->name." / ".subsections::findById($item->sid)->name);
 
             $content .= $c_html->_getHtml();
         }

@@ -7,17 +7,26 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
+			<img src="/web/assets/img/favicon.ico">
 			<a class="navbar-brand" href="/">{% name %}</a>
-		</div>
-		<div class="navbar-collapse collapse" style="height: 1px;">
-			<ul class="nav navbar-nav">
-				{% nav_menu %}
-			</ul>
+			<span>товары от разны продвацов Инстаграмма в одном месте с удобным поиском</span>
+			<a href="javascript://" class="btn btn-primary btn-follow">Подписаться</a>
 		</div>
 	</div>
 </div>
 
 <div class="container">
+
+	<div class="container-menu">
+		<ul class="nav nav-list">
+			<li class="nav-header">
+				<h4><b>Категории</b></h4>
+			</li>
+			{% nav_menu %}<br>
+			<li><a href="javascript://" onclick="history.back(); return false;"><span class="glyphicon glyphicon-chevron-left"></span> Вернутся назад</a></li>
+		</ul>
+	</div>
+
 	{% content %}
 </div>
 
