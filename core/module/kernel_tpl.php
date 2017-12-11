@@ -8,7 +8,7 @@ define('CON_S', "{% ");
 define('CON_F', " %}");
 
 define('STAMP', "Разработан на платформе Quenix Kernel();");
-define('YEAR', (($_config->_getManifest()->year==date("Y")) ? date("Y") : $_config->_getManifest()->base->year.'-'.date("Y")));
+define('YEAR', ((Manifest::_getManifest()->base->year==date("Y")) ? date("Y") : Manifest::_getManifest()->base->year.'-'.date("Y")));
 
 session_start();
 
