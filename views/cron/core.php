@@ -6,6 +6,10 @@ Atom::setup($_config->_getMySQLi());
 Atom::model("profiles");
 Atom::model("nosorted");
 
+$accessKey = "u23is91k";
+
+if($_GET['key']!=$accessKey) exit("Код доступа не совпадает");
+
 $profiles = profiles::findAll("WHERE `status` = 1");
 
 $now = date("y-m-d");
