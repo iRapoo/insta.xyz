@@ -3,8 +3,6 @@ Atom::model("profiles");
 
 $page_name = "Настройки";
 
-$profiles = profiles::findAll("ORDER BY `id` DESC");
-
 $_category = "";
 $_profiles = "";
 
@@ -44,26 +42,6 @@ else
 }
 unset($html);
 
-if(!empty($profiles))
-foreach ($profiles as $_prof)
-{
-    if(!empty($_prof->id))
-    {
-        $html = new Kernel();
-        $html->_setHtml(_DIR_ . _VIEW_ . "/setting/prof_elements.tpl.html");
-        $html->_setVar("profile_image", $_prof->photo);
-        $html->_setVar("profile_status", ($_prof->status=="1") ? "success" : "danger" );
-        $html->_setIf("profile_status", ($_prof->status=="1"));
-        $html->_setVar("profile_name", $_prof->name);
-        $html->_setVar("profile_id", $_prof->id);
-        $_profiles .= $html->_getHtml();
-    }
-}
-else
-{
-        $_profiles .= "Страницы еще не добавлены";
-}
-unset($html);
 
 $html = new Kernel();
 $html->_setHtml(_DIR_ . _VIEW_ . "/setting/access.tpl.html");
@@ -76,6 +54,5 @@ unset($html);
 $html = new Kernel();
 $html->_setHtml(_DIR_._VIEW_."/setting/setting.tpl.html");
 $html->_setVar("category_elements", $_category);
-//$html->_setVar("profiles_elements", $_profiles);
 $html->_setVar("access_elements", $_access);
 $content_block = $html->_getHtml();

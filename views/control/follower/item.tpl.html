@@ -1,0 +1,10 @@
+<tr data-id="{% follower_id %}">
+    <td>{% follower_num %}</td>
+    <td>{% follower_email %}</td>
+    <td>
+        <label class="switch">
+            <input type="checkbox" {% follower_active %}>
+            <span class="slider round" data-id="{% follower_id %}"></span>
+        </label>
+    </td>
+</tr>

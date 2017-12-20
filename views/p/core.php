@@ -23,6 +23,7 @@ $catalog = catalog::findById($ID);
 $p_active = true;
 
 $_config->css[] = _ASSETS_."/css/base.css";
+$_config->js[] = _ASSETS_."/js/catalog/follow-data.js";
 
 $html = new Kernel();
 $html->_setHtml(_DIR_._VIEW_.'/main.tpl.html');
@@ -92,5 +93,7 @@ if(!empty($catalog->id))
 
 $html->_setVar("nav_menu", $menu);
 $html->_setVar("content", $content);
+
+$html->_setVar("page_links", Manifest::_getPages());
 
 $_config->body .= $html->_getHtml();

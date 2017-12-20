@@ -32,6 +32,40 @@
 
 <div id="footer">
 	<div class="container">
-		<p class="text-muted">&copy; <script>document.write(new Date().getFullYear())</script>, made by <a href="http://quenix.xyz" target="_blank">{% company %}</a></p>
+		<p class="text-muted">{% page_links %} &copy; {% year %}</p>
+	</div>
+</div>
+
+<div class="modal fade" id="newFollow" role="dialog" data-backdrop="false">
+	<div class="modal-dialog" role="document">
+
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Подписатся на россылку</h4>
+			</div>
+
+			<div class="modal-body">
+				<form id="newFollowForm" class="newFollowForm">
+
+					<div class="form-group">
+						<label for="inputEmail">Укажите адрес эелктронной почты:</label>
+						<div class="input-group">
+							<span class="input-group-addon ti-email"></span>
+							<input type="text" class="form-control" id="inputEmail" name="email" placeholder="E-Mail">
+						</div>
+					</div>
+
+				</form>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+				<button type="submit" form="newFollowForm" class="btn btn-add btn-primary">Подписатся</button>
+			</div>
+
+		</div>
+
 	</div>
 </div>

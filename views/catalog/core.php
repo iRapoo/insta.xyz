@@ -6,6 +6,8 @@ Atom::model("subsections");
 Atom::model("catalog");
 Atom::model("views");
 
+$_config->js[] = _ASSETS_."/js/catalog/follow-data.js";
+
 $SORT = (!empty($_GET['sort'])) ? $_GET['sort'] : 30;
 
 $category = category::findAll();
@@ -171,5 +173,7 @@ if($p_active) {
 
 $html->_setVar("nav_menu", $menu);
 $html->_setVar("content", $content);
+
+$html->_setVar("page_links", Manifest::_getPages());
 
 $_config->body .= $html->_getHtml();
