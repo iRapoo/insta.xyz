@@ -4,12 +4,13 @@
             <img src="{% image %}" style="height: 120px;">
         </a>
         <ul class="dropdown-menu pull-right">
+            <li><a href="javascript://" class="btn-accept" data-get="{% img_id %}" target="_blank">Подтвердить</a></li>
             <li><a href="{% image_link %}" target="_blank">Открыть</a></li>
             <li class="divider"></li>
-            <li class="dropdown-submenu img-parent" data-img="{% img_id %}">
+            <!-- <li class="dropdown-submenu img-parent" data-img="{% img_id %}">
                 <a tabindex="-1"  href="javascript://">Перенести</a>
                 {% category %}
-            </li>
+            </li> -->
             </li>
             <li><a href="javascript://" class="btn-del" data-del="nosorted" data-id="{% img_id %}">Удалить</a></li>
         </ul>

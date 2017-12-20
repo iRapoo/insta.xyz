@@ -51,6 +51,32 @@ class Manifest{
         return $total_time;
     }
 
+    function _getPages($link = "", $_pages = ""){
+
+        $handle = fopen(PATH."/pages.txt", "r");
+
+        while (!feof($handle)) {
+            $buffer = fgets($handle, 4096);
+            $buffer = explode("::", $buffer);
+
+            $other = new Kernel();
+            $other->_setHtml(PATH."/web/pages.tpl.html");
+
+            $other->_setVar("link", $buffer[0]);
+            $other->_setVar("name_link", $buffer[1]);
+
+            if($link==$buffer[0])
+                $link = $buffer[1];
+
+            $_pages .= $other->_getHtml();
+        }
+
+        fclose($handle);
+
+        return (!empty($link)) ? $link : $_pages;
+
+    }
+
 }
 
 $_config = new Manifest;

@@ -4,14 +4,20 @@ Atom::setup($_config->_getMySQLi());
 Atom::model("profiles");
 Atom::model("nosorted");
 
-
 $page_name = "Несортированные";
+
+$_config->css[] = _ASSETS_."/css/bootstrap-select.min.css";
+$_config->js[] = _ASSETS_."/js/bootstrap-lib/bootstrap-select.min.js";
+
+$_config->css[] = _ASSETS_."/css/unsorted.css";
+$_config->js[] = _ASSETS_."/js/setting/unsorted-data.js";
 
 $p_now = (isset($_GET['p'])) ? $_GET['p'] : 1;
 $p_count = 20;
 $p_start = ($p_count*$p_now)-$p_count;
 
 $nosorted = nosorted::findAll("WHERE `active` = 1 ORDER BY `datetime` DESC LIMIT $p_start, $p_count");
+$category = category::findAll();
 $p_active = true;
 
 $content_block .= '<div class="container"><div class="row">';
@@ -29,6 +35,7 @@ if(!empty($category)) {
             $subsection = subsections::findByTag("cid", $_cat->id);
 
             $_category .= '<li class="dropdown-submenu"><a href="javascript://">' . $_cat->name . '</a><ul class="dropdown-menu">';
+            $_category_list .= '<option value="'.$_cat->id.'">' . $_cat->name . '</option>';
 
             if(!empty($subsection)) {
                 foreach ($subsection as $_sub) {
@@ -74,6 +81,7 @@ if(!empty($nosorted))
 
 $html_block->_setVar("image_page", $p_now);
 $html_block->_setVar("image_block", $image_block);
+$html_block->_setVar("category_list", $_category_list);
 
 $content_block .= $html_block->_getHtml();
 

@@ -9,6 +9,7 @@ class catalog extends Atom
     public $link = "VARCHAR(255)";
     public $type = "VARCHAR(255)";
     public $caption = "LONGBLOB";
+    public $color = "VARCHAR(255)";
     public $datetime = "DATE";
     public $active = "INT(1) DEFAULT 0";
 }

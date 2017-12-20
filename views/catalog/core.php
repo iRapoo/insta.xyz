@@ -9,6 +9,7 @@ Atom::model("views");
 $_config->js[] = _ASSETS_."/js/catalog/follow-data.js";
 
 $SORT = (!empty($_GET['sort'])) ? $_GET['sort'] : 30;
+$COLOR = (!empty($_GET['color']) AND $_GET['color']!="all") ? "AND `color` = '{$_GET['color']}'" : "";
 
 $category = category::findAll();
 
@@ -39,7 +40,7 @@ $p_now = (isset($_GET['p'])) ? $_GET['p'] : 1;
 $p_count = 20;
 $p_start = ($p_count*$p_now)-$p_count;
 
-$catalog = catalog::findAll("WHERE `sid` = '{$SID}' AND `datetime` > (NOW() - INTERVAL $SORT DAY) AND `active` = 1 ORDER BY `datetime` DESC LIMIT $p_start, $p_count");
+$catalog = catalog::findAll("WHERE `sid` = '{$SID}' AND `datetime` > (NOW() - INTERVAL $SORT DAY) AND `active` = 1 $COLOR ORDER BY `datetime` DESC LIMIT $p_start, $p_count");
 $p_active = true;
 
 $_config->css[] = _ASSETS_."/css/base.css";
@@ -173,6 +174,8 @@ if($p_active) {
 
 $html->_setVar("nav_menu", $menu);
 $html->_setVar("content", $content);
+$html->_setVar("sort", (isset($_GET['sort'])) ? "sort=".$_GET['sort']."&" : "");
+$html->_setVar("color", (isset($_GET['color'])) ? "&color=".$_GET['color'] : "");
 
 $html->_setVar("page_links", Manifest::_getPages());
 

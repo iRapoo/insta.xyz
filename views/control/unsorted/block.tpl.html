@@ -3,9 +3,76 @@
         <div class="panel-heading">
             <h3 class="panel-title">Несортированные изображнеия (страница {% image_page %})</h3>
         </div>
-        <div class="panel-body">
+        <div class="panel-body panel-unsorted">
             {% image_block %}
         </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editModal" role="dialog" data-backdrop="false">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Подтверждение</h4>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body panel-unsorted-image">
+                                <div class="col-xs-7 image_view">
+                                    <div class="item_image">
+                                        <img src="javascript://">
+                                    </div>
+                                </div>
+                                <div class="col-xs-5">
+                                    <div class="panel-body caption_panel"></div>
+                                </div>
+                            </div>
+                            <div class="panel-footer">
+                                <form id="editModalForm" class="editModalForm">
+                                    <center>
+                                        <select name="cat" class="select-category" required>
+                                            <option disabled selected value="0">Выбрать раздел</option>
+                                            {% category_list %}
+                                        </select>
+                                        <select name="sub" class="select-sub" required>
+                                            <option disabled selected value="0">Выбрать подраздел</option>
+                                        </select>
+                                        <select name="color" required>
+                                            <option disabled selected value="0">Выбрать цвет</option>
+                                            <option value="black">Черный</option>
+                                            <option value="grey">Серый</option>
+                                            <option value="red">Красный</option>
+                                            <option value="green">Зеленый</option>
+                                            <option value="blue">Синий</option>
+                                            <option value="purple">Фиолетовый</option>
+                                            <option value="brown">Коричневый</option>
+                                            <option value="white">Белый</option>
+                                            <option value="pink">Розовый</option>
+                                            <option value="yellow">Желтый</option>
+                                        </select>
+                                    </center>
+                                    <input type="hidden" name="data-id" class="data-id-image" value="" />
+                                </form>
+                            </div>
+                        </div>
+                        <center><button type="submit" form="editModalForm" class="btn btn-primary">ПРИМЕНИТЬ</button></center>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-cancel btn-default" data-dismiss="modal">Отмена</button>
+                <button type="submit" class="btn btn-next btn-primary data-id-image">Далее</button>
+            </div>
+
+        </div>
+
     </div>
 </div>
 
