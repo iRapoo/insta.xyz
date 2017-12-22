@@ -16,6 +16,7 @@ $(function() {
                     $('.item_image img').attr({ "src" : arr.image });
                     $('.caption_panel').html(arr.caption);
                     $('.data-id-image').val(arr.id);
+                    $('.btn-del-item').attr({ 'data-id' : arr.id });
 
 
                 }else alert("Ошибка, возможно такой страницы не существует!");
@@ -83,6 +84,32 @@ $(function() {
         location.reload();
     });
 
+    $('.btn-del-item').click(function() {
+
+        var _data_id = $(this).attr("data-id");
+
+        var _isDel = confirm("Вы действительно хотите удалить запись?");
+
+        if(_isDel) {
+            $.ajax({
+                type: "POST",
+                url: "/views/control/setting/delete/nosorted.php",
+                data: {"data": _data_id},
+                dataType: "text",
+                success: function (data) {
+                    if (data) {
+                        alert("Успешно удалено!");
+                        nextAccept(_data_id);
+                    }
+                    else {
+                        alert("Ошибка, попробуйте еще раз...");
+                    }
+                }
+            });
+        }
+
+    });
+
     function nextAccept(_data_get) {
         $.ajax({
             type: 'POST',
@@ -96,6 +123,7 @@ $(function() {
                     $('.item_image img').attr({ "src" : arr.image });
                     $('.caption_panel').html(arr.caption);
                     $('.data-id-image').val(arr.id);
+                    $('.btn-del-item').attr({ 'data-id' : arr.id });
 
                 }else alert("Ошибка, возможно такой страницы не существует!");
             },
