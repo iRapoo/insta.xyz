@@ -9,7 +9,7 @@ try {
     exit("Ошибка базы данных или построения модели!!!");
 }
 
-$_config->title = (new Manifest)->_getPages($_GET['obj']);
+$_config->title = ("О нас");
 
 $ID = (new Generate)->getHideKey($_GET['id']);
 
@@ -21,6 +21,8 @@ $catalog = catalog::findById($ID);
 $p_active = true;
 
 $_config->css[] = _ASSETS_."/css/base.css";
+$_config->js[] = _ASSETS_."/js/catalog/ckeditor.js";
+$_config->js[] = _ASSETS_."/js/catalog/edit-page.js";
 
 $html = new Kernel();
 $html->_setHtml(_DIR_.'/p/main.tpl.html');
@@ -60,10 +62,17 @@ if(!empty($category)) {
 
 $content = new Kernel();
 $content->_setHtml(_DIR_._VIEW_."/content.tpl.html");
+
+if(isset($_SESSION['login']))
+    $content->_setVar("content", '<textarea name="content" id="editor" class="ckedit-text">
+                '.file_get_contents("page.txt", true).'
+            </textarea><br>
+            <button class="btn btn-primary btn-save-ckedit">Сохранить</button>');
+else $content->_setVar("content", file_get_contents("page.txt", true));
+
 $html->_setVar("content", $content->_getHtml());
 
 $html->_setVar("nav_menu", $menu);
-//$html->_setVar("content", $content);
 
 $html->_setVar("page_links", (new Manifest)->_getPages());
 

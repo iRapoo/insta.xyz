@@ -186,3 +186,7 @@ code {
 	height: 24px;
 	width: 24px;
 }
+
+.ck-editor {
+	width: 800px !important;
+}
