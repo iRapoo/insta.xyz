@@ -9,7 +9,7 @@ try {
     exit("Ошибка базы данных или построения модели!!!");
 }
 
-$_config->title = ("О нас");
+$_config->title = ("Продавцам и магазинам");
 
 $ID = (new Generate)->getHideKey($_GET['id']);
 
